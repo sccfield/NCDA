@@ -304,6 +304,43 @@ nav.mainnav{gap:.4rem}
 .modal{padding:.8rem 1rem;font-size:.9rem;max-height:84vh}
 .modal h3{font-size:1rem}
 #toast{font-size:.8rem;padding:.4rem .9rem;bottom:calc(.8rem + env(safe-area-inset-bottom))}
+
+/* Ajustements demandés : luminosité du mode clair adoucie (fond grisé, contrastes parfaits) */
+:root {
+  --bg: #eef2f6;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #475569;
+  --border: #cbd5e1;
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #334155;
+  --primary: #38bdf8;
+  --primary-hover: #0ea5e9;
+}
+
+/* Boutons "Suivant" et "Valider" plus compacts et élégants */
+.quiz-actions button, #btnVal, #btnNext, #btnPrev {
+  padding: 5px 12px !important;
+  font-size: 0.85rem !important;
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+}
+
+/* En mode entraînement, on masque le bouton Valider et la sélection valide directement */
+body.practice-mode #btnVal {
+  display: none !important;
+}
+
 </style>
 </head>
 <body>
@@ -637,8 +674,17 @@ function toggleOpt(qIdx,optIdx){
   const q=QUESTIONS[qIdx];
   if(state.mode==="practice"&&state.val[q.i])return;
   let sel=state.sel[q.i]||[];
-  sel=(q.a.length===1)?[optIdx]:(sel.includes(optIdx)?sel.filter(x=>x!==optIdx):sel.concat(optIdx));
-  state.sel[q.i]=sel;render();
+  const multi = q.a.length > 1;
+  sel = multi ? (sel.includes(optIdx)?sel.filter(x=>x!==optIdx):sel.concat(optIdx)) : [optIdx];
+  state.sel[q.i]=sel;
+  
+  // Mode entraînement : dès que la sélection est complète, validation automatique et affichage de la correction
+  if(state.mode==="practice"){
+    if((!multi && sel.length === 1) || (multi && sel.length === q.a.length)){
+      validateCurrent(q);
+    }
+  }
+  render();
 }
 function renderGrid(){
   const g=$("#navGrid");g.innerHTML="";
@@ -882,7 +928,16 @@ $("#btnRetryWrong").addEventListener("click",()=>startPractice(state.lastWrong))
 $("#btnResHome").addEventListener("click",goHome);
 $("#btnSearch").addEventListener("click",openSearch);
 $("#btnUser").addEventListener("click",openProfile);
-$("#btnDl").addEventListener("click",exportReport);
+$("#btnDl").addEventListener("click",()=>{
+  // Téléchargement direct de la PWA ZIP
+  const a = document.createElement('a');
+  a.href = 'NCDA_NS0-165_120Q_site.zip';
+  a.download = 'NCDA_NS0-165_120Q_site.zip';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  toast("Téléchargement de la version PWA (ZIP) lancé !");
+});
 $("#btnLink").addEventListener("click",shareLink);
 $("#btnTheme").addEventListener("click",()=>{ls.set("ncda_theme",document.documentElement.dataset.theme==="dark"?"light":"dark");document.documentElement.dataset.theme=ls.get("ncda_theme")});
 $("#btnFont").addEventListener("click",()=>{const n=(parseInt(ls.get("ncda_size")||"0",10)+1)%3;ls.set("ncda_size",String(n));document.documentElement.dataset.size=String(n);fit()});
