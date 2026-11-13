@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light" data-size="0">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NetApp Certified Data Administrator (NCDA) – Entraînement</title>
+<meta name="description" content="QCM d'entraînement NS0-165 avec explications documentées — NetApp Certified Data Administrator.">
+<meta name="theme-color" content="#0067C5">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="NCDA">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+/* ============ Palette officielle NetApp ============
+   Noir #000000 • Blanc #FFFFFF • Bleu NetApp #0067C5
+   Violet profond #351F9C • Magenta/Prune #831784 • Turquoise #00DDF4 */
+   [hidden] {
+  display: none !important;
+}
+:root{
+  --blue:#0067C5;--blue-d:#00519B;--purple:#351F9C;--magenta:#831784;--turq:#00DDF4;
+  --bg:#F2F5F9;--card:#FFFFFF;--text:#0F141A;--muted:#5B6572;--line:#E3E8EF;
+  --ok:#0D8A4D;--ok-bg:#E6F6EE;--bad:#D21F3C;--bad-bg:#FDECEE;--gold:#9A6B00;--gold-bg:#FDF3D7;
+  --shadow:0 8px 28px rgba(15,20,26,.09);--radius:14px;
+}
+html[data-theme="dark"]{
+  --bg:#0A0E14;--card:#111823;--text:#EDF2F8;--muted:#98A4B3;--line:#232D3A;
+  --ok:#3ECF7F;--ok-bg:#0F2A1D;--bad:#FF6B81;--bad-bg:#321219;--gold:#E6B34A;--gold-bg:#2D2410;
+  --shadow:0 8px 28px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html{font-size:16px}
+html[data-size="1"]{font-size:17.5px}
+html[data-size="2"]{font-size:19px}
+body{margin:0;font-family:"Segoe UI Variable Text","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--turq);outline-offset:2px;border-radius:6px}
+
+/* ---------- Header ---------- */
+header.top{position:sticky;top:0;z-index:40;background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(15,20,26,.06)}
+.top-in{max-width:1100px;margin:0 auto;padding:.6rem 1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:.7rem;min-width:0}
+.brand svg{height:44px;flex:0 0 auto;color:var(--text)}
+.brand h1{font-size:1.02rem;margin:0;line-height:1.25;font-weight:700}
+.brand small{display:block;color:var(--muted);font-weight:500;font-size:.72rem;letter-spacing:.04em}
+nav.mainnav{margin-left:auto;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.navlink{background:none;border:none;color:var(--blue);font-weight:600;padding:.4rem .6rem;border-radius:8px}
+.navlink:hover{background:var(--bg)}
+.score{font-weight:700;background:var(--bg);border:1px solid var(--line);padding:.35rem .7rem;border-radius:999px;font-size:.85rem;white-space:nowrap}
+.tools{display:flex;gap:.25rem}
+.tools button{border:1px solid var(--line);background:var(--card);border-radius:9px;width:2.15rem;height:2.15rem;font-size:.95rem;line-height:1;color:var(--text)}
+.tools button:hover{border-color:var(--blue);color:var(--blue)}
+.tools .aa{font-weight:700;font-size:.8rem}
+
+main{max-width:1100px;margin:0 auto;padding:1.2rem 1rem 3rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+/* ---------- Accueil ---------- */
+.hero{padding:2.4rem 1.6rem;text-align:center;color:#fff;background:
+ linear-gradient(115deg,var(--purple) 0%,var(--blue) 48%,var(--magenta) 100%);border:none;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:4px;background:linear-gradient(90deg,var(--turq),var(--magenta))}
+.hero svg{height:74px;color:#fff}
+.hero h2{margin:.8rem 0 .3rem;font-size:1.7rem}
+.hero .lead{max-width:640px;margin:0 auto 1.4rem;opacity:.95}
+.cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.2rem}
+.btn{border-radius:999px;padding:.75rem 1.6rem;font-weight:700;border:2px solid transparent;transition:transform .08s}
+.btn:active{transform:scale(.97)}
+.btn-light{background:#fff;color:var(--purple)}
+.btn-light:hover{background:var(--turq);color:#000}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-primary:hover{background:var(--blue-d);border-color:var(--blue-d)}
+.btn-primary:disabled{opacity:.45;cursor:not-allowed}
+.btn-plain{background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:.5rem .9rem}
+.btn-plain:hover{border-color:var(--blue);color:var(--blue)}
+.chips{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:.25rem .8rem;font-size:.8rem;font-weight:600}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.2rem 0}
+.grid3 .card{padding:1.1rem 1.2rem}
+.grid3 h3{margin:.1rem 0 .4rem;font-size:1rem}
+.grid3 h3 span{color:var(--blue)}
+.grid3 p{margin:0;color:var(--muted);font-size:.9rem}
+details.about{margin-top:.4rem;padding:1rem 1.2rem}
+details.about summary{cursor:pointer;font-weight:700;color:var(--blue)}
+details.about p{color:var(--muted);font-size:.92rem}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.6rem;font-size:.85rem;color:var(--muted)}
+
+/* ---------- Badges ---------- */
+.badge{display:inline-block;border-radius:999px;padding:.15rem .65rem;font-size:.72rem;font-weight:700;letter-spacing:.02em;border:1px solid transparent}
+.badge.ok{background:var(--ok-bg);color:var(--ok);border-color:var(--ok)}
+.badge.gold{background:var(--gold-bg);color:var(--gold);border-color:var(--gold)}
+.badge.red{background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
+.badge.info{background:var(--bg);color:var(--blue);border-color:var(--blue)}
+
+/* ---------- Quiz ---------- */
+.exambar{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;padding:.7rem 1rem;margin-bottom:1rem}
+#exTimer{font-weight:800;font-variant-numeric:tabular-nums;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:.3rem .8rem}
+#exTimer.warn{color:var(--bad);border-color:var(--bad)}
+#exCount{color:var(--muted);font-size:.9rem}
+.exambar .btn-primary{margin-left:auto}
+.navgrid{display:flex;flex-wrap:wrap;gap:.35rem;padding:.9rem 1rem;margin-bottom:1rem}
+.navgrid.collapsed{display:none}
+.navgrid button{width:2.2rem;height:2.2rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:.8rem;font-weight:700}
+.navgrid button.ans{background:var(--blue);border-color:var(--blue);color:#fff}
+.navgrid button.cur{outline:3px solid var(--turq);outline-offset:1px}
+.navgrid button.flg{box-shadow:inset 0 -4px 0 var(--gold)}
+.qcard{padding:1.4rem 1.5rem}
+.qtop{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:.6rem}
+.qtop .cnt{font-weight:800;font-size:.9rem;color:var(--blue)}
+.qtop .badges{margin-left:auto;display:flex;gap:.4rem;flex-wrap:wrap}
+.progress{height:8px;background:var(--bg);border-radius:99px;overflow:hidden;margin-bottom:1.1rem;border:1px solid var(--line)}
+.progress div{height:100%;background:linear-gradient(90deg,var(--purple),var(--blue),var(--turq));width:0;transition:width .25s}
+.qtext{font-size:1.13rem;font-weight:650;margin:.2rem 0 .3rem}
+.hint{color:var(--muted);font-size:.85rem;margin:.1rem 0 1rem}
+.opts{display:flex;flex-direction:column;gap:.6rem}
+.opt{display:flex;align-items:flex-start;gap:.8rem;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:.8rem .9rem;color:var(--text)}
+.opt:hover:not(:disabled){border-color:var(--blue)}
+.opt .let{flex:0 0 auto;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem}
+.opt .mark{margin-left:auto;font-weight:800}
+.opt.sel{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 7%,var(--card))}
+.opt.sel .let{background:var(--blue);color:#fff;border-color:var(--blue)}
+.opt.ok{border-color:var(--ok);background:var(--ok-bg)}
+.opt.ok .let{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.ok .mark{color:var(--ok)}
+.opt.bad{border-color:var(--bad);background:var(--bad-bg)}
+.opt.bad .let{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt.bad .mark{color:var(--bad)}
+.expbox{margin-top:1.1rem;border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:12px;padding:1rem 1.1rem;background:var(--bg)}
+.exphead{font-weight:800;margin-bottom:.5rem}
+.exphead.good{color:var(--ok)}
+.exphead.miss{color:var(--bad)}
+.expbox p{margin:.4rem 0;font-size:.95rem}
+.expbox .doc{color:var(--blue);font-weight:600;font-size:.86rem}
+.qactions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem;align-items:center}
+.qactions .btn-primary{min-width:9rem}
+.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;color:var(--muted);font-size:.85rem;flex-wrap:wrap;gap:.5rem}
+
+/* ---------- Résultats ---------- */
+.results-head{padding:1.6rem;text-align:center}
+.results-head .big{font-size:2.6rem;font-weight:900;color:var(--blue)}
+.results-head .pct{font-size:1.1rem;font-weight:700}
+.rbar{max-width:420px;margin:.8rem auto}
+#rMsg{color:var(--muted)}
+#rTime{color:var(--muted);font-size:.85rem}
+.ritem{border:1px solid var(--line);border-left-width:6px;border-radius:10px;margin:.6rem 1rem;padding:.6rem .9rem;background:var(--card)}
+.ritem.good{border-left-color:var(--ok)}
+.ritem.miss{border-left-color:var(--bad)}
+.ritem summary{cursor:pointer;font-size:.92rem}
+.ritem p{margin:.4rem 0;font-size:.9rem;color:var(--muted)}
+.ritem .doc{color:var(--blue);font-weight:600}
+
+/* ---------- Modales / toast ---------- */
+.overlay{position:fixed;inset:0;background:rgba(5,8,12,.55);display:flex;align-items:flex-start;justify-content:center;padding:8vh 1rem;z-index:60}
+.modal{width:min(560px,100%);max-height:74vh;overflow:auto;background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:1.2rem 1.3rem}
+.modal h3{margin:0 0 .8rem;color:var(--blue)}
+.modal input[type=search]{width:100%;padding:.65rem .8rem;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+.sres{margin-top:.8rem;display:flex;flex-direction:column;gap:.4rem}
+.sres button{text-align:left;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:.55rem .7rem;color:var(--text)}
+.sres button:hover{border-color:var(--blue)}
+.sres small{color:var(--muted)}
+.mrow{display:flex;justify-content:space-between;gap:1rem;padding:.45rem 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+.mrow b{color:var(--blue)}
+.modal .btn-plain{margin-top:1rem}
+#toast{position:fixed;bottom:1.4rem;left:50%;transform:translateX(-50%);background:#000;color:#fff;padding:.6rem 1.2rem;border-radius:999px;font-size:.9rem;box-shadow:var(--shadow);z-index:80;border:1px solid var(--turq)}
+footer{border-top:1px solid var(--line);padding:1.2rem;text-align:center;color:var(--muted);font-size:.85rem;background:var(--card)}
+@media(max-width:640px){.brand h1{font-size:.88rem}.qcard{padding:1rem}}
+
+/* ============ Adaptation application mobile (PWA Android) ============ */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overscroll-behavior-y:none}
+body{-webkit-tap-highlight-color:transparent;padding-bottom:env(safe-area-inset-bottom);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+button,.opt,.navgrid button{touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.qtext,.expbox,.ritem{-webkit-user-select:text;user-select:text}
+header.top{padding-top:env(safe-area-inset-top)}
+#toast{bottom:calc(1.4rem + env(safe-area-inset-bottom));max-width:90vw;text-align:center}
+.btn-install{background:var(--blue);color:#fff;border:none;border-radius:999px;padding:.4rem .9rem;font-weight:700;font-size:.82rem}
+.btn-install:hover{background:var(--blue-d)}
+.install-tip{margin:1rem auto 0;max-width:640px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);border-radius:12px;padding:.7rem 1rem;font-size:.85rem}
+.offline-pill{display:none;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:.2rem .65rem;font-size:.72rem;font-weight:700}
+body.is-offline .offline-pill{display:inline-block}
+@media(max-width:640px){
+  .top-in{padding:.5rem .7rem;gap:.4rem}
+  .brand svg{height:34px}
+  .brand h1{font-size:.8rem}
+  .brand small{font-size:.62rem}
+  nav.mainnav{width:100%;margin-left:0;justify-content:space-between}
+  .tools button{width:2.6rem;height:2.6rem;font-size:1.05rem}
+  .navlink{padding:.55rem .7rem}
+  main{padding:.8rem .7rem 2.5rem}
+  .hero{padding:1.6rem 1rem}
+  .hero h2{font-size:1.35rem}
+  .opt{padding:.95rem .8rem}
+  .qactions{position:sticky;bottom:0;background:var(--card);padding:.7rem 0 calc(.7rem + env(safe-area-inset-bottom));border-top:1px solid var(--line);margin-top:1rem;z-index:5}
+  .qactions .btn-primary{flex:1 1 auto;min-width:0}
+  .btn-plain{padding:.7rem .9rem}
+  .navgrid button{width:2.5rem;height:2.5rem}
+  header.top{position:static}
+  .exambar{position:sticky;top:0;z-index:30;padding-top:calc(.7rem + env(safe-area-inset-top))}
+  .exambar{gap:.5rem}
+  .exambar .btn-primary{margin-left:auto;padding:.55rem 1.1rem}
+  .exambar .btn-plain{padding:.5rem .7rem}
+  .qactions{flex-wrap:nowrap;gap:.5rem}
+  .qactions .btn-plain{flex:0 0 auto;min-width:3.2rem;text-align:center}
+  .lbl{display:none}
+}
+@media(display-mode:standalone){
+  footer{padding-bottom:calc(1.2rem + env(safe-area-inset-bottom))}
+}
+
+/* ============ Mode « une page = un écran » — aucun ascenseur ============
+   La page occupe exactement la hauteur de l'écran ; l'échelle (--s, appliquée à rem)
+   est réduite automatiquement par fit() tant que le contenu dépasse. */
+html,html[data-size="0"],html[data-size="1"],html[data-size="2"]{font-size:calc(16px * var(--s,.85));height:100%;overflow:hidden}
+body{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden;line-height:1.4}
+header.top{position:static;flex:0 0 auto;padding-top:env(safe-area-inset-top)}
+main{flex:1 1 auto;min-height:0;width:100%;overflow:hidden;padding:.5rem .7rem .3rem}
+footer{flex:0 0 auto;padding:.25rem .5rem calc(.25rem + env(safe-area-inset-bottom));font-size:.65rem;line-height:1.2}
+body{padding-bottom:0}
+
+/* En-tête compact */
+.top-in{padding:.3rem .6rem;gap:.3rem .6rem}
+.brand{gap:.5rem}
+.brand svg{height:1.9rem}
+.brand h1{font-size:.78rem;line-height:1.15}
+.brand small{display:none}
+nav.mainnav{gap:.4rem}
+.navlink{padding:.25rem .5rem;font-size:.85rem}
+.score{padding:.2rem .6rem;font-size:.8rem}
+.btn-install{padding:.25rem .7rem;font-size:.75rem}
+.tools button{width:1.9rem;height:1.9rem;font-size:.85rem;border-radius:8px}
+.tools .aa{font-size:.72rem}
+
+/* Accueil compact */
+.hero{padding:.9rem .8rem}
+.hero svg{height:2.6rem}
+.hero h2{margin:.35rem 0 .2rem;font-size:1.15rem}
+.hero .lead{margin:0 auto .7rem;font-size:.82rem;max-width:34rem}
+.cta{margin-bottom:.6rem;gap:.5rem}
+.btn{padding:.5rem 1.2rem;font-size:.88rem}
+.chip{padding:.12rem .55rem;font-size:.68rem}
+.install-tip{margin-top:.6rem;padding:.45rem .7rem;font-size:.72rem}
+.install-tip .btn{margin:0;padding:.35rem .9rem;font-size:.78rem}
+.grid3{grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.5rem;margin:.6rem 0 0}
+.grid3 .card{padding:.55rem .75rem}
+.grid3 h3{margin:0 0 .2rem;font-size:.85rem}
+.grid3 p{font-size:.72rem;line-height:1.3}
+
+/* Quiz compact */
+.exambar{padding:.35rem .6rem;margin-bottom:.4rem;gap:.4rem;position:static}
+#exTimer{padding:.15rem .6rem;font-size:.85rem}
+#exCount{font-size:.75rem}
+.exambar .btn-plain,.exambar .btn-primary{padding:.3rem .65rem;font-size:.78rem;margin-left:0}
+.exambar .btn-primary{margin-left:auto}
+.qcard{padding:.65rem .8rem}
+.qtop{margin-bottom:.25rem;gap:.4rem}
+.qtop .cnt{font-size:.8rem}
+.badge{font-size:.62rem;padding:.08rem .5rem}
+.progress{height:5px;margin-bottom:.5rem}
+.qtext{font-size:.98rem;margin:.1rem 0 .15rem;line-height:1.3}
+.hint{font-size:.7rem;margin:0 0 .45rem}
+.opts{gap:.3rem}
+.opt{padding:.4rem .6rem;gap:.55rem;font-size:.88rem;border-width:1.5px;border-radius:10px;line-height:1.3}
+.opt .let{width:1.35rem;height:1.35rem;font-size:.68rem}
+.expbox{margin-top:.45rem;padding:.45rem .65rem;border-left-width:5px;border-radius:10px}
+.exphead{font-size:.82rem;margin-bottom:.2rem}
+.expbox p{margin:.2rem 0;font-size:.78rem;line-height:1.35}
+.expbox .doc{font-size:.72rem}
+.qactions{position:static;margin-top:.5rem;padding:0;border-top:0;gap:.5rem;flex-wrap:nowrap;background:none}
+.qactions .btn-plain{padding:.4rem .8rem;font-size:.85rem;min-width:0;flex:0 0 auto}
+.qactions .btn-primary{padding:.45rem 1rem;font-size:.9rem;min-width:0;flex:1 1 auto}
+.qfoot{margin-top:.35rem;font-size:.68rem;gap:.3rem}
+.qfoot .btn-plain{padding:.2rem .55rem;font-size:.72rem}
+
+/* La liste des questions (examen) devient une fenêtre superposée : elle ne pousse plus la page */
+.navgrid{display:flex;margin:0}
+.navgrid:not(.collapsed){position:fixed;z-index:55;left:.7rem;right:.7rem;top:25vh;max-height:60vh;overflow:auto;box-shadow:0 12px 40px rgba(0,0,0,.35);padding:.6rem}
+.navgrid button{width:2rem;height:2rem;font-size:.72rem}
+.lbl{display:none}
+
+/* Résultats compacts : pastilles cliquables */
+.results-head{padding:.7rem .8rem}
+.results-head .big{font-size:1.9rem;line-height:1.1}
+.results-head .pct{font-size:.95rem}
+.rbar{margin:.4rem auto}
+#rMsg{margin:.2rem 0;font-size:.82rem}
+#rTime{margin:.1rem 0;font-size:.7rem}
+.results-head .cta{margin:.5rem 0 0 !important}
+.rhint{margin:.5rem .2rem .3rem;font-size:.72rem;color:var(--muted);text-align:center}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(2.3rem,1fr));gap:.3rem;padding:.2rem}
+.rchip{border:2px solid var(--line);background:var(--card);color:var(--text);border-radius:9px;padding:.25rem 0;font-weight:800;font-size:.72rem;line-height:1.15;text-align:center}
+.rchip small{display:block;font-size:.6rem;font-weight:700}
+.rchip.good{border-color:var(--ok);background:var(--ok-bg);color:var(--ok)}
+.rchip.miss{border-color:var(--bad);background:var(--bad-bg);color:var(--bad)}
+.rdetail h3{margin:0 0 .4rem;font-size:1rem}
+.rdetail p{margin:.35rem 0;font-size:.88rem}
+.rdetail .doc{color:var(--blue);font-weight:600}
+
+/* Fenêtres modales : texte plus petit, hauteur bornée */
+.overlay{padding:6vh .8rem}
+.modal{padding:.8rem 1rem;font-size:.9rem;max-height:84vh}
+.modal h3{font-size:1rem}
+#toast{font-size:.8rem;padding:.4rem .9rem;bottom:calc(.8rem + env(safe-area-inset-bottom))}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <svg viewBox="0 0 86.125 99.156" role="img" aria-label="Logo NetApp"><path fill="currentColor" d="m0 79.5v16.031h3.469v-10.125l7.687 10.125h2.969v-16.031h-3.438v9.906l-7.467-9.906zm43.719 0-6.657 16.031h3.563l1.469-3.562h6.312l1.469 3.562h3.625l-6.625-16.031zm-13.813.75v3.094h-1.436v2.969h1.437v5.75c0 2.817 1.451 3.656 3.563 3.656 1.158 0 1.992-.255 2.718-.688v-2.781a3.537 3.537 0 0 1-1.718.438c-.772 0-1.094-.393-1.094-1.188v-5.188h2.844v-2.968h-2.844v-3.094zm-8.062 2.875c-3.545 0-6.032 2.869-6.032 6.344v.031c0 3.726 2.717 6.312 6.376 6.313 2.202 0 3.835-.873 4.968-2.282l-1.968-1.75c-.955.888-1.81 1.25-2.97 1.25-1.545 0-2.624-.807-2.968-2.375h8.469c.026-.317.031-.665.031-.937 0-3.453-1.841-6.594-5.906-6.594zm39.781 0c-1.795 0-2.973.834-3.813 1.969v-1.75h-3.437v15.812h3.438v-5.219c.817.978 1.973 1.813 3.812 1.813 2.886 0 5.531-2.214 5.531-6.281v-.063c0-4.066-2.69-6.281-5.531-6.281zm14.188 0c-1.794 0-2.942.834-3.782 1.969v-1.75h-3.469v15.812h3.47v-5.219c.816.978 1.94 1.813 3.78 1.813 2.886 0 5.532-2.214 5.532-6.281v-.063c0-4.066-2.691-6.281-5.531-6.281zm5.187.219v.375h.75v2.344h.406v-2.344h.781v-.375zm2.438 0v2.719h.406v-2.25l.812 2.25h.25l.813-2.25v2.25h.406v-2.72h-.625l-.719 2.063-.719-2.062zm-38.188.375 2.094 5.156h-4.219zm-23.406 2.187c1.452 0 2.358 1.015 2.562 2.563h-5.218c.272-1.565 1.222-2.563 2.656-2.563zm38.875.156c1.611 0 2.969 1.323 2.968 3.344v.063c0 2.045-1.357 3.343-2.968 3.344-1.612 0-2.938-1.322-2.938-3.344v-.063c0-2.021 1.326-3.343 2.938-3.344zm14.218 0c1.614 0 2.97 1.323 2.97 3.344v.063c0 2.045-1.356 3.343-2.97 3.344-1.61 0-2.968-1.322-2.968-3.344v-.063c0-2.021 1.358-3.343 2.969-3.344z"/><path fill="#0067C5" d="m0 0v67.499h31.5v-40.5h18v40.5h31.499v-67.499z"/></svg>
+      <h1>NetApp Certified Data Administrator (NCDA) – Entraînement<small>NS0-165 • Corrigé documenté • Vérifié le 4 septembre 2026</small></h1>
+    </div>
+    <nav class="mainnav" aria-label="Navigation principale">
+      <button class="navlink" id="btnHome">Accueil</button>
+      <span class="score">Score : <span id="scoreVal">0 / 0</span></span>
+      <span class="offline-pill" id="offPill">Hors-ligne</span>
+      <button class="btn-install" id="btnInstall" hidden>⬇ Installer</button>
+      <div class="tools">
+        <button id="btnSearch" title="Rechercher une question" aria-label="Rechercher">🔍</button>
+        <button id="btnUser" title="Profil & statistiques" aria-label="Profil">👤</button>
+        <button id="btnDl" title="Exporter les résultats" aria-label="Exporter">⤓</button>
+        <button id="btnLink" title="Partager" aria-label="Partager">🔗</button>
+        <button id="btnFont" class="aa" title="Taille du texte" aria-label="Taille du texte">Aa</button>
+        <button id="btnTheme" title="Mode sombre / clair" aria-label="Thème">◐</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ==================== ACCUEIL ==================== -->
+<section id="home">
+  <div class="hero">
+    <svg viewBox="0 0 86.125 99.156" role="img" aria-label="NetApp"><path fill="currentColor" d="m0 79.5v16.031h3.469v-10.125l7.687 10.125h2.969v-16.031h-3.438v9.906l-7.467-9.906zm43.719 0-6.657 16.031h3.563l1.469-3.562h6.312l1.469 3.562h3.625l-6.625-16.031zm-13.813.75v3.094h-1.436v2.969h1.437v5.75c0 2.817 1.451 3.656 3.563 3.656 1.158 0 1.992-.255 2.718-.688v-2.781a3.537 3.537 0 0 1-1.718.438c-.772 0-1.094-.393-1.094-1.188v-5.188h2.844v-2.968h-2.844v-3.094zm-8.062 2.875c-3.545 0-6.032 2.869-6.032 6.344v.031c0 3.726 2.717 6.312 6.376 6.313 2.202 0 3.835-.873 4.968-2.282l-1.968-1.75c-.955.888-1.81 1.25-2.97 1.25-1.545 0-2.624-.807-2.968-2.375h8.469c.026-.317.031-.665.031-.937 0-3.453-1.841-6.594-5.906-6.594zm39.781 0c-1.795 0-2.973.834-3.813 1.969v-1.75h-3.437v15.812h3.438v-5.219c.817.978 1.973 1.813 3.812 1.813 2.886 0 5.531-2.214 5.531-6.281v-.063c0-4.066-2.69-6.281-5.531-6.281zm14.188 0c-1.794 0-2.942.834-3.782 1.969v-1.75h-3.469v15.812h3.47v-5.219c.816.978 1.94 1.813 3.78 1.813 2.886 0 5.532-2.214 5.532-6.281v-.063c0-4.066-2.691-6.281-5.531-6.281zm5.187.219v.375h.75v2.344h.406v-2.344h.781v-.375zm2.438 0v2.719h.406v-2.25l.812 2.25h.25l.813-2.25v2.25h.406v-2.72h-.625l-.719 2.063-.719-2.062zm-38.188.375 2.094 5.156h-4.219zm-23.406 2.187c1.452 0 2.358 1.015 2.562 2.563h-5.218c.272-1.565 1.222-2.563 2.656-2.563zm38.875.156c1.611 0 2.969 1.323 2.968 3.344v.063c0 2.045-1.357 3.343-2.968 3.344-1.612 0-2.938-1.322-2.938-3.344v-.063c0-2.021 1.326-3.343 2.938-3.344zm14.218 0c1.614 0 2.97 1.323 2.97 3.344v.063c0 2.045-1.356 3.343-2.97 3.344-1.61 0-2.968-1.322-2.968-3.344v-.063c0-2.021 1.358-3.343 2.969-3.344z"/><path fill="#FFFFFF" fill-opacity=".28" d="m0 0v67.499h31.5v-40.5h18v40.5h31.499v-67.499z"/></svg>
+    <h2>NetApp Certified Data Administrator (NCDA)</h2>
+    <p class="lead">QCM d'entraînement basé sur l'examen NS0-165 : 120 questions corrigées et documentées, chaque réponse étant justifiée par la documentation officielle NetApp.</p>
+    <div class="cta">
+      <button class="btn btn-light" id="btnPractice">Commencer l'entraînement</button>
+      <button class="btn btn-ghost" id="btnExam">Passer l'examen blanc</button>
+    </div>
+    <div class="chips">
+      <span class="chip">120 questions</span><span class="chip">Examen blanc : 90 min</span>
+      <span class="chip">Explications détaillées</span><span class="chip">Base V10.02</span>
+    </div>
+    <div class="install-tip" id="installTip" hidden>📱 Installez l'application sur votre écran d'accueil pour l'utiliser plein écran et hors connexion.
+      <div style="margin-top:.5rem"><button class="btn btn-light" id="btnInstall2" style="padding:.45rem 1.1rem">Installer l'application</button></div>
+    </div>
+  </div>
+
+  <div class="grid3">
+    <div class="card"><h3><span>📗</span> Mode entraînement</h3><p>Parcourez les 120 questions à votre rythme. Après chaque validation, la bonne réponse est mise en évidence avec une explication détaillée et la référence documentaire NetApp.</p></div>
+    <div class="card"><h3><span>⏱</span> Examen blanc</h3><p>Conditions réelles : 120 questions, 90 minutes, navigation libre, marquage des questions et correction complète avec explications à la soumission.</p></div>
+    <div class="card"><h3><span>📊</span> Suivi de progression</h3><p>Vos statistiques (réponses validées, taux de réussite, historique des examens) sont conservées localement et exportables.</p></div>
+  </div>
+
+</section>
+
+<!-- ==================== QUIZ ==================== -->
+<section id="quiz" hidden>
+  <div class="exambar card" id="examBar" hidden>
+    <span id="exTimer">⏱ 90:00</span>
+    <span id="exCount"></span>
+    <button class="btn-plain" id="btnGrid" aria-expanded="false">▦ Grille</button>
+    <button class="btn-plain" id="btnFlag">🚩 Marquer</button>
+    <button class="btn btn-primary" id="btnSubmit">Soumettre</button>
+  </div>
+  <div class="navgrid card" id="navGrid" hidden></div>
+  <div class="qcard card">
+    <div class="qtop"><span class="cnt" id="qCount"></span><span class="badges" id="qBadges"></span></div>
+    <div class="progress"><div id="qProg"></div></div>
+    <div class="qtext" id="qText"></div>
+    <p class="hint" id="qHint"></p>
+    <div class="opts" id="qOpts"></div>
+    <div class="expbox" id="expBox" hidden></div>
+    <div class="qactions" id="prActions">
+      <button class="btn-plain" id="btnPrev" aria-label="Question précédente">← <span class="lbl">Précédente</span></button>
+      <button class="btn btn-primary" id="btnVal">Valider</button>
+      <button class="btn-plain" id="btnNext" aria-label="Question suivante">Suivant →</button>
+    </div>
+    <div class="qfoot"><button class="btn-plain" id="btnQuit">Quitter la session</button><span id="qMini"></span></div>
+  </div>
+</section>
+
+<!-- ==================== RÉSULTATS ==================== -->
+<section id="results" hidden>
+  <div class="card results-head">
+    <div class="big" id="rScore"></div>
+    <div class="pct" id="rPct"></div>
+    <div class="progress rbar"><div id="rBar"></div></div>
+    <p id="rMsg"></p><p id="rTime"></p>
+    <div class="cta" style="margin-top:1rem">
+      <button class="btn btn-primary" id="btnExamAgain">Recommencer l'examen</button>
+      <button class="btn-plain" id="btnRetryWrong">Refaire les questions ratées</button>
+      <button class="btn-plain" id="btnResHome">Accueil</button>
+    </div>
+  </div>
+  <div class="card" style="margin-top:.5rem;padding:.4rem .6rem .6rem"><div class="rhint">Touchez une pastille pour afficher la correction détaillée.</div><div class="rgrid" id="rList"></div></div>
+</section>
+</main>
+
+<div class="overlay" id="mOv" hidden><div class="modal" id="mBody"></div></div>
+<div id="toast" hidden></div>
+
+<footer>© 2026 TMOBA. Tous droits réservés.</footer>
+
+<script>
+"use strict";
+/* ==================== DONNÉES — 120 questions NS0-165 (Expert NetApp & Dumps) ====================
+   s : v = validée | n = à nuancer | c = corrigée — a : indices des bonnes réponses */
+const QUESTIONS=[
+{i:1,s:"v",t:"A storage administrator is managing an ONTAP 9.17.1 cluster with FlexCache for NAS workloads. A new requirement is to enable applications to access data on FlexCache volumes using S3. Which step is required?",o:["Enable S3 access on the FlexCache origin volume","Create a new FlexCache volume with the S3 option","Configure an S3 gateway on the cluster management LIF","Upgrade ONTAP to 9.18.1 or later"],a:[3],e:"L'accès S3 aux données NAS hébergées dans des volumes FlexCache apparaît avec ONTAP 9.18.1 et exige que tous les nœuds du cluster soient dans cette version ou une version ultérieure. En 9.17.1, la fonction n'existe pas : aucune option de configuration ne peut l'activer, la mise à niveau est donc le préalable.",d:"What's new in ONTAP 9.18.1"},
+{i:2,s:"v",t:"What is enabled on an ONTAP SMB share to increase data throughput and fault tolerance for Microsoft SQL Server databases?",o:["SMB Multichannel","SMB signing","Access-based enumeration","SMB encryption"],a:[0],e:"SMB Multichannel établit plusieurs connexions réseau au sein d'une même session SMB, ce qui augmente le débit et la tolérance aux pannes des bases SQL Server sur SMB. Le chiffrement SMB protège les données mais n'améliore pas le débit ; l'énumération basée sur l'accès ne fait que masquer les fichiers non autorisés.",d:"Configure SMB Multichannel"},
+{i:3,s:"v",t:"The ONTAP cluster experiences intermittent latency during peak hours. Which NetApp tool can monitor performance and configure alerts based on threshold breaches?",o:["ONTAP System Manager","Active IQ Unified Manager","NetApp Harvest","Active IQ Config Advisor"],a:[1],e:"Active IQ Unified Manager centralise la surveillance de la santé et des performances des clusters ONTAP, avec seuils et alertes configurables lors des dépassements : c'est l'outil adapté pour corréler les latences intermittentes aux heures de pointe. Harvest ne fait que collecter des métriques.",d:"Active IQ Unified Manager documentation"},
+{i:4,s:"n",t:"Which feature is enabled by default on newly created storage units after upgrading an existing cluster to ONTAP 9.18.1?",o:["Multi-admin verification","ARP/AI","NetApp Volume Encryption","SnapLock Compliance"],a:[1],e:"Depuis ONTAP 9.18.1, la protection autonome contre les ransomwares avec IA (ARP/AI) est activée par défaut sur les nouveaux volumes des systèmes pris en charge (AFF A-Series, AFF C-Series, ASA, ASA r2), après une période de grâce de 12 heures qui établit la ligne de base d'activité. À nuancer : cela ne s'applique ni aux volumes existants, ni aux plateformes non prises en charge où l'activation reste manuelle. La documentation (What's new in ONTAP 9.18.1, Learn about ONTAP ARP/AI) et les retours communautaires confirment ce comportement : la période de grâce est ajustable et des exclusions permettent de limiter les faux positifs.",d:"What's new in ONTAP 9.18.1 • Learn about ONTAP ARP/AI"},
+{i:5,s:"v",t:"Which ONTAP feature replicates objects from one bucket to another bucket on a different cluster?",o:["SnapMirror XDP","Cloud Sync","SnapVault","SnapMirror S3"],a:[3],e:"SnapMirror S3 réplique ou sauvegarde des objets entre compartiments S3, y compris entre clusters ONTAP distincts. Cloud Sync déplace des données entre NetApp et le cloud objet public ; SnapMirror XDP opère au niveau volume NAS, pas objet.",d:"Learn about ONTAP SnapMirror S3"},
+{i:6,s:"v",t:"Which two ONTAP features protect critical snapshots against deletion or modification if an administrator account is compromised?",o:["Tamperproof snapshots","Multi-admin verification","SnapLock AutoCommit","NetApp Volume Encryption"],a:[0,1],e:"Les Tamperproof snapshots verrouillent les snapshots : impossible de les supprimer ou de les modifier avant expiration du verrou, même par un administrateur compromis. La vérification multi-administrateur exige l'approbation de plusieurs administrateurs pour les opérations protégées.",d:"Lock an ONTAP snapshot • Multi-admin verification overview"},
+{i:7,s:"v",t:"What is required to use external antivirus protection in ONTAP?",o:["An FPolicy engine","An SMB share","An export policy","A scanner pool"],a:[3],e:"Vscan repose sur un scanner pool : on y déclare les serveurs antivirus, leurs utilisateurs privilégiés et leurs priorités. Sans scanner pool, ONTAP ne peut pas distribuer les requêtes d'analyse aux serveurs externes.",d:"Create a scanner pool"},
+{i:8,s:"v",t:"What allows automatic switchover of a SnapMirror active sync relationship during a site disaster?",o:["ONTAP Mediator","MetroCluster IP","SnapMirror Vault","SVM disaster recovery"],a:[0],e:"L'ONTAP Mediator sert de témoin de quorum pour SnapMirror active sync : lors d'une panne de site, il permet de déterminer quelle copie continue de servir les E/S et autorise le basculement automatique. Sans médiateur, la bascule nécessite une intervention manuelle.",d:"SnapMirror active sync architecture"},
+{i:9,s:"v",t:"Which component is required for a Cloud Volumes ONTAP deployment in AWS?",o:["NetApp Console agent","ONTAP Select Deploy","Active IQ Unified Manager","A SnapMirror license"],a:[0],e:"L'agent NetApp Console fournit la connectivité et les autorisations AWS nécessaires pour déployer et administrer Cloud Volumes ONTAP. ONTAP Select Deploy ne concerne que les clusters ONTAP Select virtualisés.",d:"Get started with Cloud Volumes ONTAP in AWS"},
+{i:10,s:"v",t:"Several FAS clusters are being consolidated into a new AFF cluster. Which solution relocates NFSv3-only SVMs nondisruptively?",o:["SVM migrate","Aggregate relocation","SnapMirror XDP","FlexClone"],a:[0],e:"SVM Data Mobility (SVM migrate) déplace une SVM entière — données et configuration, y compris NFSv3 uniquement — vers un autre cluster sans interruption de service, ce qui répond à une consolidation FAS vers AFF.",d:"SVM Data Mobility"},
+{i:11,s:"v",t:"Which vserver modify parameter isolates the data of four SVMs by restricting the aggregates each SVM can use?",o:["max-volumes","aggr-list","allowed-protocols","ipspace"],a:[1],e:"Le paramètre -aggr-list de vserver modify restreint les agrégats qu'une SVM peut utiliser : chaque SVM ne crée ses volumes que sur ses agrégats attitrés, ce qui isole les données.",d:"vserver modify"},
+{i:12,s:"v",t:"Which ONTAP feature scans for identical blocks within a volume to reduce physical storage usage?",o:["Compression","Deduplication","Data compaction","Thin provisioning"],a:[1],e:"La déduplication compare les blocs d'un volume, identifie les doublons et les remplace par des pointeurs afin de réduire l'espace physique consommé. La compression agit sur la taille des blocs individuels, la compaction regroupe les petites écritures.",d:"Deduplication concepts"},
+{i:13,s:"v",t:"An administrator creates a FlexCache volume and wants to warm the cache before the clients' first access. How is this accomplished?",o:["Increase the cache volume size","Enable volume deduplication","Schedule a SnapMirror update","Prepopulate the cache volume"],a:[3],e:"La prépopulation (prepopulate) charge à l'avance les données spécifiées depuis le volume d'origine vers le volume FlexCache : les premiers accès clients sont servis localement, sans latence initiale de remplissage.",d:"Prepopulate an ONTAP FlexCache volume"},
+{i:14,s:"v",t:"Which NetApp tool collects performance, capacity, and hardware metrics from ONTAP clusters for display in Grafana dashboards?",o:["Active IQ Unified Manager","NetApp XCP","NetApp Harvest","Active IQ Config Advisor"],a:[2],e:"NetApp Harvest collecte les métriques ONTAP (performance, capacité, matériel) et les expose à Prometheus/Grafana pour la visualisation. Unified Manager consomme ces données mais n'est pas le collecteur publié vers Grafana.",d:"NetApp Harvest documentation"},
+{i:15,s:"v",t:"After an unexpected node reboot, NAS data LIFs are not on their home port. Which setting returns each LIF automatically?",o:["failover-policy","auto-revert","ipspace assignment","interface-group failover"],a:[1],e:"La propriété auto-revert d'une LIF la fait revenir automatiquement sur son port d'origine (home port) lorsque celui-ci redevient disponible, par exemple après le redémarrage d'un nœud.",d:"Revert a LIF to its home port"},
+{i:16,s:"v",t:"Which technology encrypts iSCSI traffic end to end?",o:["CHAP","NetApp Aggregate Encryption","IPsec","Self-encrypting drives"],a:[2],e:"IPsec chiffre le trafic IP entre l'initiateur et ONTAP, donc iSCSI de bout en bout. CHAP authentifie la session iSCSI sans chiffrer les données ; NVE/SED chiffrent les données au repos, pas en transit.",d:"Configure IP security over wire encryption"},
+{i:17,s:"v",t:"Port e1a is saturated and e1b is underused; all ports are in the same broadcast domain. How can performance be improved without changing the switches?",o:["Increase the MTU on port e1a","Create a new broadcast domain","Enable jumbo frames cluster-wide","Migrate some LIFs to port e1b"],a:[3],e:"Le déplacement de certaines LIFs vers le port e1b sous-utilisé rééquilibre la charge réseau sans aucune modification des commutateurs, les deux ports appartenant au même domaine de diffusion.",d:"Modify an ONTAP LIF"},
+{i:18,s:"v",t:"Which two NetApp tools continuously monitor ONTAP cluster performance?",o:["Active IQ Config Advisor","Data Infrastructure Insights","Active IQ Unified Manager","ONTAP System Manager"],a:[1,2],e:"Data Infrastructure Insights surveille en continu l'infrastructure complète (serveurs, réseau, stockage) ; Active IQ Unified Manager suit la santé, la capacité et les performances ONTAP. Config Advisor valide une configuration à un instant T, il ne surveille pas.",d:"Data Infrastructure Insights • Active IQ Unified Manager"},
+{i:19,s:"v",t:"Which SAN protocol is suitable for a deployment using Ethernet switches?",o:["iSCSI","Fibre Channel","NVMe/FC","SAS"],a:[0],e:"iSCSI transporte les commandes SCSI sur IP/Ethernet et fonctionne donc avec des commutateurs Ethernet standard. Fibre Channel et NVMe/FC exigent une fabric Fibre Channel ; SAS est une technologie d'attachement local.",d:"iSCSI overview"},
+{i:20,s:"v",t:"When adding nodes to an existing two-node cluster, which feature is automatically disabled?",o:["Storage failover","AutoSupport","Cluster HA","LIF failover"],a:[2],e:"Le mode cluster HA est propre aux clusters à deux nœuds sans commutateur de cluster. Dès que l'on ajoute des nœuds, il est automatiquement désactivé car le quorum et la communication passent par le réseau de cluster.",d:"cluster ha modify"},
+{i:21,s:"v",t:"How can an administrator guarantee that critical workloads are not degraded by competing workloads? Choose two.",o:["Place all workloads in the same QoS policy group","Apply a ceiling to competing workloads","Disable QoS on the critical workloads","Apply a floor to the critical workloads"],a:[1,3],e:"Un plafond (ceiling) borne la consommation des charges concurrentes ; un plancher (floor) garantit un débit minimal aux charges critiques lorsque la plateforme le prend en charge. Les deux réglages protègent ensemble les charges prioritaires.",d:"Guarantee throughput with QoS"},
+{i:22,s:"v",t:"After initializing SnapMirror, hourly source snapshots do not appear on the destination. What causes this behavior?",o:["The SnapMirror transfer priority","The SnapMirror bandwidth limit","A Snapshot copy lock on the source","SnapMirror labels"],a:[3],e:"Les règles d'une policy SnapMirror ne transfèrent les snapshots que si leur étiquette (label) correspond aux règles de conservation de la policy. Sans label couvert par la policy de destination, les snapshots horaires ne sont jamais répliqués.",d:"Define a rule for a SnapMirror policy"},
+{i:23,s:"v",t:"Data was deleted from a thin-provisioned VMFS datastore, but no LUN blocks were freed. Which two actions solve the problem?",o:["Run VMFS UNMAP","Increase the LUN size","Enable ONTAP space allocation","Convert the LUN to thick provisioning"],a:[0,2],e:"VMFS UNMAP informe la baie que des blocs ont été libérés par le datastore ; l'option space allocation permet à ONTAP et à l'hôte d'échanger ces informations de récupération d'espace. Les deux actions sont complémentaires.",d:"Enable ONTAP space allocation • VMware vSphere host configuration"},
+{i:24,s:"v",t:"Which ONTAP service enables external antivirus servers to scan SMB files before they are opened or written?",o:["FPolicy","SnapLock","Vscan","IPsec"],a:[2],e:"Vscan connecte ONTAP à des serveurs antivirus externes : les fichiers SMB sont analysés avant ouverture ou écriture selon la politique configurée. FPolicy sert au screening par règles, pas à l'antivirus en tant que tel.",d:"ONTAP antivirus configuration"},
+{i:25,s:"n",t:"A FlexVol is accessed through NFSv3 and SMB. Share permissions allow Windows users, but some cannot view the share. What is needed?",o:["Enable SMB signing","Modify the SMB share ACL","Increase the maximum number of SMB sessions","Create a name mapping"],a:[3],e:"En accès multiprotocole NFSv3 + SMB, ONTAP doit associer chaque identité Windows (SID) à une identité UNIX (UID/GID) pour évaluer les droits sur des données de style UNIX. Quand la correspondance implicite par le nom échoue, certains utilisateurs Windows sont refusés alors que les permissions du partage les autorisent : une règle de name mapping (vserver services name-mapping) corrige le problème. À nuancer : dans la pratique, on vérifie aussi les ACL NTFS, le security style du volume et la résolution des groupes ; la documentation (SMB name mapping, Provision NFS and SMB storage) et les forums communautaires confirment toutefois que le name mapping est la cause classique de ce symptôme — c'est la réponse attendue.",d:"ONTAP SMB name mapping • Provision NFS and SMB storage"},
+{i:26,s:"v",t:"Which two default automatic HA features work together to reduce or avoid client outages on a FAS cluster?",o:["Automatic giveback","SnapMirror active sync","Hardware-assisted takeover","LIF auto-revert"],a:[0,2],e:"Le takeover assisté par le matériel accélère la détection de panne et la bascule ; l'automatic giveback restitue ensuite automatiquement les agrégats au nœud partenaire rétabli. Ces deux fonctions sont activées par défaut sur FAS.",d:"Hardware-assisted takeover • Automatic takeover and giveback"},
+{i:27,s:"v",t:"Which tool aligns visual performance graphs with system events occurring at the same time?",o:["NetApp Harvest","ONTAP CLI","Active IQ Unified Manager","Active IQ Config Advisor"],a:[2],e:"Active IQ Unified Manager corrèle les graphiques de performances et les événements système survenus au même moment, ce qui facilite l'analyse de la cause des pointes d'activité.",d:"Active IQ Unified Manager"},
+{i:28,s:"v",t:"Clients on VLAN 33 can reach System Manager through the cluster management LIF, but clients on other subnets cannot. Which component must be modified?",o:["The broadcast domain","The failover group","A route","The port VLAN"],a:[2],e:"Le symptôme (accès OK depuis le sous-réseau local, échec ailleurs) indique un problème de routage : une route vers les autres sous-réseaux est nécessaire pour que le trafic de réponse de la LIF de gestion atteigne les clients distants.",d:"Display and manage ONTAP routing"},
+{i:29,s:"v",t:"Which single interface manages ONTAP-based systems installed in public and private clouds?",o:["ONTAP System Manager","Active IQ Unified Manager","ONTAP Select Deploy","NetApp Console"],a:[3],e:"NetApp Console fournit le plan de contrôle centralisé pour découvrir, déployer et administrer les systèmes de stockage NetApp sur site et dans les clouds publics, depuis une interface unique.",d:"NetApp Console documentation"},
+{i:30,s:"v",t:"Which two network components are required to fail over LIFs across subnets?",o:["A VIP LIF","DNS","BGP","DHCP"],a:[0,2],e:"Les LIFs VIP ne sont pas liées à un sous-réseau local unique ; BGP annonce les routes permettant d'atteindre la LIF depuis différents emplacements réseau. DNS et DHCP n'y contribuent pas.",d:"Configure virtual IP LIFs"},
+{i:31,s:"v",t:"Which NetApp tool validates the deployment of an ONTAP cluster?",o:["Active IQ Unified Manager","NetApp Harvest","Active IQ Config Advisor","NetApp Console"],a:[2],e:"Active IQ Config Advisor collecte la configuration du cluster et la confronte aux bonnes pratiques NetApp : câblage, paramètres, conformité. C'est l'outil de validation de déploiement.",d:"Check an ONTAP cluster with Config Advisor"},
+{i:32,s:"v",t:"Which NetApp solution uses hardware disk encryption?",o:["NetApp Volume Encryption","NetApp Aggregate Encryption","IPsec","Self-encrypting drives (SEDs)"],a:[3],e:"Les SED chiffrent les données directement dans le matériel du disque. NVE et NAE sont des mécanismes de chiffrement logiciel ONTAP ; IPsec protège le trafic en transit.",d:"ONTAP storage encryption support"},
+{i:33,s:"v",t:"Where can an administrator find the specific HTTP calls used for tasks executed in ONTAP System Manager?",o:["The EMS log","The AutoSupport log","The audit log","The REST API log"],a:[3],e:"Le journal REST API enregistre les appels HTTP émis par System Manager vers ONTAP : endpoints, méthodes et paramètres de chaque tâche. Le journal d'audit trace les commandes administrateur, pas les appels HTTP.",d:"REST API management with System Manager"},
+{i:34,s:"v",t:"Which ONTAP technology combines SSDs for cache and HDDs for capacity in one aggregate?",o:["Flash Pool","Flash Cache","FlexCache","FabricPool"],a:[0],e:"Un agrégat Flash Pool combine une couche SSD de cache et des disques durs de capacité dans le même agrégat. Flash Cache est une carte d'accélération côté nœud ; FabricPool déporte les données froides vers le cloud objet.",d:"Create a Flash Pool aggregate"},
+{i:35,s:"v",t:"Which predefined SVM administrator role is limited to managing SnapMirror relationships and snapshots?",o:["vsadmin","vsadmin-read-only","backup","vsadmin-backup"],a:[3],e:"Le rôle vsadmin-backup comprend la gestion des relations SnapMirror, des snapshots et des opérations NDMP liées à la sauvegarde. vsadmin donne le contrôle complet de la SVM.",d:"Predefined roles for SVM administrators"},
+{i:36,s:"v",t:"After adding a new HA pair to Cluster A, replication from the new pair to Clusters B and C no longer works. Cluster A uses IPspaces AB and AC. Which two actions correct the problem?",o:["Add two cluster management LIFs on the new nodes","Add two intercluster LIFs in IPspace AB","Add two intercluster LIFs in IPspace AC","Reconfigure the SnapMirror throttle"],a:[1,2],e:"Chaque nœud participant au peering doit porter une LIF intercluster dans l'IPspace correspondant. Les nouveaux nœuds n'en possèdent ni dans AB ni dans AC : ajouter deux LIFs intercluster dans chaque IPspace rétablit la réplication. Des LIFs de gestion ne remplacent pas les LIFs intercluster.",d:"Configure intercluster LIFs • SnapMirror S3 requirements"},
+{i:37,s:"v",t:"Which network ping packet-size validates an IPv4 jumbo-frame path with MTU 9000 and fragmentation disabled?",o:["9000 bytes","8972 bytes","8992 bytes","8980 bytes"],a:[1],e:"Le paramètre taille du ping correspond aux données ICMP. Pour un paquet IPv4 total de 9000 octets sans fragmentation : 9000 − 20 (en-tête IPv4) − 8 (en-tête ICMP) = 8972 octets de charge utile.",d:"network ping command"},
+{i:38,s:"v",t:"Which feature provides continuous availability and transparent SAN failover between two ASA r2 systems?",o:["FlexCache","SnapMirror active sync","SnapMirror XDP","SnapLock"],a:[1],e:"SnapMirror active sync réplique les écritures de manière synchrone entre deux systèmes ASA r2 et permet aux applications SAN de continuer à fonctionner lors d'une défaillance de site, avec basculement transparent.",d:"SnapMirror active sync"},
+{i:39,s:"v",t:"Which ONTAP component allows multiple tenants with overlapping IP addresses to access their data?",o:["A VLAN","A broadcast domain","A failover group","An IPspace"],a:[3],e:"Chaque IPspace possède ses propres domaines de diffusion et tables de routage, ce qui isole complètement les réseaux de locataires utilisant éventuellement les mêmes adresses IP.",d:"Configure ONTAP IPspaces"},
+{i:40,s:"v",t:"Which ONTAP mechanism lets a third-party ransomware protection solution screen file access?",o:["Tamperproof snapshots","Multi-admin verification","FPolicy","SnapLock"],a:[2],e:"FPolicy transmet les notifications d'accès aux fichiers à un moteur externe ou natif qui peut surveiller, analyser ou bloquer les opérations selon la politique configurée : c'est le point d'intégration des solutions tierces.",d:"How ONTAP FPolicy works"},
+{i:41,s:"n",t:"Which two statements about SnapMirror S3 are true?",o:["Automatic resynchronization of the buckets","Users, groups and rules are replicated to the destination","CA certificates for the source and destination","The source and destination must use different S3 keys"],a:[0,2],e:"A est vraie : après remise à disposition du compartiment source (suppression puis recréation), SnapMirror S3 resynchronise automatiquement les deux compartiments. B est fausse : utilisateurs, groupes et règles S3 ne sont pas répliqués. D est fausse : les mêmes clés peuvent être utilisées si elles sont fournies manuellement. C n'est vraie que dans le scénario HTTPS : la documentation (SnapMirror S3 requirements) recommande alors des certificats signés par une CA pour la communication source/destination ; sans HTTPS, ce prérequis tombe. La paire A et C reste donc correcte — mémorisez cette réserve plutôt que la seule lettre. Les retours communautaires confirment que la resynchronisation automatique est bien le comportement par défaut après re-provisionnement du bucket.",d:"Take over from a remote destination bucket • SnapMirror S3 requirements • Create a remote mirror for an existing bucket"},
+{i:42,s:"c",t:"Which ONTAP management UI performs drag-and-drop administrative operations?",o:["Active IQ Unified Manager","NetApp Console","ONTAP System Manager","Cloud Insights"],a:[1],e:"CORRECTION : la bonne réponse est NetApp Console (le corrigé d'origine indiquait à tort ONTAP System Manager). La matrice des permissions NetApp Console mentionne explicitement le glisser-déposer pour les opérations de réplication entre ressources ; l'ouverture de System Manager est présentée comme une action distincte.",d:"Cloud Volumes ONTAP roles in NetApp Console"},
+{i:43,s:"v",t:"Which two hypervisors support ONTAP Select MetroCluster SDS?",o:["KVM","Microsoft Hyper-V","Nutanix AHV","VMware ESXi"],a:[0,3],e:"La documentation de planification MetroCluster SDS autorise VMware ESXi et KVM, comme pour les clusters ONTAP Select à deux nœuds en environnement ROBO. Hyper-V et AHV ne sont pas supportés pour ce scénario.",d:"MetroCluster SDS deployment requirements"},
+{i:44,s:"v",t:"Which two statements are true for NetApp AFX platforms?",o:["Interoperability with FlexCache","Mixing AFX nodes with AFF/FAS nodes in the same cluster","AFX uses the same ONTAP personality as AFF/FAS","Data replication with AFF/FAS systems"],a:[0,3],e:"AFX peut établir des relations FlexCache et des relations de réplication avec des systèmes AFF et FAS. En revanche, les nœuds AFX ne peuvent pas être mélangés avec des nœuds AFF/FAS dans le même cluster : AFX utilise une personnalité ONTAP désagrégée.",d:"NetApp AFX FAQ"},
+{i:45,s:"v",t:"Which NetApp tool restores an entire bucket from an ONTAP S3 snapshot?",o:["NetApp Console","Active IQ Unified Manager","ONTAP CLI","ONTAP System Manager"],a:[2],e:"Depuis ONTAP 9.18.1, la CLI ONTAP donne un accès natif aux snapshots S3 et permet de restaurer un objet, un ensemble d'objets ou un compartiment entier. Les interfaces graphiques ne couvrent pas encore la restauration complète d'un bucket.",d:"List and restore data from an S3 snapshot"},
+{i:46,s:"v",t:"Which administration utility provides installation, management, and mediator services for ONTAP Select?",o:["Active IQ Unified Manager","ONTAP Select Deploy","ONTAP System Manager","NetApp Harvest"],a:[1],e:"ONTAP Select Deploy est la machine virtuelle d'administration utilisée pour installer, créer et gérer les clusters ONTAP Select ; elle héberge également le service Mediator des clusters à deux nœuds.",d:"Learn about ONTAP Select Deploy • MetroCluster SDS requirements"},
+{i:47,s:"v",t:"Which ONTAP protocol allows Red Hat Enterprise Linux clients to perform NAS reads and writes directly and in parallel?",o:["NFSv3","SMB 3.1.1","iSCSI","Parallel NFS (pNFS)"],a:[3],e:"pNFS, associé à NFSv4.1, permet aux clients d'effectuer les opérations de données en parallèle et directement, évitant que le serveur NFS ne devienne un point d'étranglement.",d:"Enable or disable pNFS"},
+{i:48,s:"v",t:"What must be configured for a new NVMe/TCP workload?",o:["An NVMe namespace","An igroup","An export policy","A LUN map"],a:[0],e:"Le namespace est l'unité logique de stockage présentée à l'hôte NVMe : on le crée puis on le mappe à un sous-système NVMe contenant les NQN des hôtes autorisés. Les igroups et export policies concernent iSCSI/FCP et NFS.",d:"Provision NVMe storage"},
+{i:49,s:"v",t:"A customer wants to set a maximum storage capacity and receive an alert as each SVM approaches that capacity. Which two settings are required?",o:["Volume autosize","Snapshot reserve","storage-limit-threshold-alert","storage-limit"],a:[2,3],e:"Le paramètre storage-limit impose la capacité maximale de la SVM ; storage-limit-threshold-alert définit le pourcentage auquel ONTAP génère l'alerte. Les deux sont nécessaires pour limiter et avertir.",d:"Manage SVM capacity limits"},
+{i:50,s:"v",t:"Which ONTAP command reports the average delay contributed by each ONTAP subsystem to I/O response time?",o:["qos statistics workload show","qos statistics workload latency show","qos statistics policy show","storage aggregate latency show"],a:[1],e:"Cette commande ventile la latence d'une charge QoS entre les différents centres de service ONTAP (réseau, cluster, données, disque…) afin d'identifier le composant qui contribue au délai.",d:"qos statistics workload latency show"},
+{i:51,s:"v",t:"Which two features are supported by SnapMirror SVM?",o:["Replication of SAN LIFs","Replication of NAS LIFs","Replication of the SMB server","Replication of NVMe subsystems"],a:[1,2],e:"SVM disaster recovery réplique les volumes et une grande partie de la configuration de la SVM, notamment les LIFs de données NAS et le serveur SMB. Les objets SAN (LIFs SAN, igroups, namespaces) ne sont pas répliqués.",d:"SnapMirror SVM replication"},
+{i:52,s:"v",t:"A four-node AFF cluster uses NetApp Volume Encryption. Which two storage efficiencies remain available?",o:["Aggregate deduplication","Cross-volume deduplication","Data compaction","Volume deduplication"],a:[2,3],e:"NVE chiffre avec des clés propres aux volumes : les efficacités au niveau du volume — déduplication de volume et compaction — restent disponibles. La déduplication inter-volumes ou au niveau agrégat nécessite NAE.",d:"Enable aggregate-level encryption"},
+{i:53,s:"v",t:"Which two protocols discover directly connected network devices?",o:["ARP","LLDP","ICMP","CDP"],a:[1,3],e:"ONTAP prend en charge LLDP, protocole standard de découverte des voisins indépendant du constructeur, et CDP, protocole Cisco, pour identifier les équipements directement connectés.",d:"ONTAP neighbor discovery protocols"},
+{i:54,s:"v",t:"Where can a customer verify the end-of-support date of a NetApp AFF controller?",o:["Active IQ Config Advisor","The Interoperability Matrix Tool","Hardware Universe","NetApp Harvest"],a:[2],e:"Hardware Universe centralise les informations de prise en charge, de compatibilité et de cycle de vie du matériel NetApp : on y vérifie la date de fin de support d'un contrôleur AFF.",d:"NetApp Hardware Universe"},
+{i:55,s:"v",t:"What must an administrator create in a new SVM to allow an NFS client to access a FlexVol volume?",o:["An igroup","An export policy rule","A load-sharing mirror","An SMB server"],a:[1],e:"Une règle d'export policy définit les clients autorisés, les protocoles, les méthodes d'authentification et les droits d'accès (ro/rw) au volume NFS. Sans règle applicable, le montage est refusé.",d:"Create an ONTAP export policy"},
+{i:56,s:"v",t:"What indicates that SnapMirror is functioning properly?",o:["The relationship state is Idle","The destination volume is of type RW","The transfer rate is at its maximum","The relationship lag time is less than the update frequency"],a:[3],e:"Si le décalage (lag) reste inférieur à l'intervalle de mise à jour attendu, les transferts s'effectuent suffisamment régulièrement. Un état Idle signifie seulement qu'aucun transfert n'est en cours, ce n'est pas un indicateur de bonne santé.",d:"snapmirror show"},
+{i:57,s:"v",t:"Which ONTAP feature recovers an SVM to another location when the primary SVM is unavailable?",o:["FlexClone","SnapLock","SnapMirror SVM","Aggregate relocation"],a:[2],e:"SnapMirror SVM (SVM disaster recovery) réplique les données et la configuration d'une SVM vers une SVM de destination pouvant être activée sur un autre cluster en cas d'indisponibilité du site primaire.",d:"SnapMirror SVM replication"},
+{i:58,s:"c",t:"Which action is required before converting an existing ONTAP LUN to the NVMe protocol?",o:["Unmap the LUN from the igroup","Take the LUN offline","Create a Snapshot copy of the LUN","Rename the LUN"],a:[0],e:"CORRECTION : il faut démapper la LUN de son igroup (le corrigé d'origine proposait à tort la mise hors ligne). La documentation Convert a LUN into a namespace exige que la LUN n'ait aucun mappage vers un igroup avant sa conversion ; la mise hors ligne n'est pas listée comme prérequis distinct.",d:"Convert a LUN into a namespace"},
+{i:59,s:"c",t:"What must be configured before HA traffic encryption can be enabled?",o:["Onboard Key Manager","External key manager","An IPsec policy","Multi-admin verification"],a:[1],e:"CORRECTION : un gestionnaire de clés externe est requis (le corrigé d'origine proposait à tort l'Onboard Key Manager). Depuis ONTAP 9.18.1, le chiffrement du trafic entre partenaires HA exige la configuration préalable d'un key manager externe ; OKM n'est pas accepté pour cette fonction.",d:"Configure encryption for ONTAP HA traffic"},
+{i:60,s:"v",t:"Which method ensures that data in a local tier cannot be read if a device is repurposed, returned, misplaced, or stolen?",o:["Multi-admin verification","FPolicy","IPsec","Self-encrypting drives (SEDs)"],a:[3],e:"Les disques autochiffrants protègent les données au niveau du support : la destruction ou la modification sécurisée des clés rend les données illisibles lorsque le disque quitte le système, même retourné, perdu ou volé.",d:"Encrypt stored data using hardware"}
+,
+{i:61,s:"v",t:"An administrator wants to configure a FabricPool aggregate using an on-premises StorageGRID object store. Which two requirements must be met? (Choose two.)",o:["Configure an intercluster LIF on the storage node","Ensure the StorageGRID cluster uses self-signed certificates or trusted CA certificates","Configure a Flash Pool tier as the primary performance tier","Create a cloud tier associated with the object store"],a:[1,3],e:"Pour configurer FabricPool avec un object store sur site comme StorageGRID, il faut déclarer le cloud tier associé et s'assurer que les certificats SSL/TLS (CA ou auto-signés approuvés) sont correctement configurés pour sécuriser les échanges HTTPS. Les intercluster LIFs sont nécessaires pour le peering de cluster ou SnapMirror, mais FabricPool utilise des data LIFs ou node management LIFs selon la configuration.",d:"FabricPool requirements with StorageGRID"},
+{i:62,s:"v",t:"Which two commands can be used to monitor the progress of an aggregate relocation (AGR) operation in ONTAP? (Choose two.)",o:["storage aggregate relocation show","volume move show","event log show","storage aggregate show"],a:[0,2],e:"La commande `storage aggregate relocation show` affiche en temps réel l'état d'avancement d'un déplacement d'agrégat entre nœuds d'une paire HA. Le journal des événements (`event log show`) enregistre également les messages d'étape de l'AGR.",d:"Monitor aggregate relocation"},
+{i:63,s:"v",t:"When configuring NetApp Volume Encryption (NVE) on an existing volume, which condition is mandatory on the cluster?",o:["The cluster must have an active Onboard Key Manager or external key manager configured","All volumes in the aggregate must be encrypted simultaneously","The cluster must run exclusively on AFF hardware","SnapMirror relationships must be temporarily suspended during encryption"],a:[0],e:"NVE exige qu'un gestionnaire de clés (Onboard Key Manager ou Key Management Interoperability Protocol - KMIP externe) soit configuré et actif sur le cluster pour stocker et fournir les clés de chiffrement des volumes.",d:"NetApp Volume Encryption prerequisites"},
+{i:64,s:"v",t:"Which two actions are performed when you invoke a volume autosize operation in ONTAP? (Choose two.)",o:["The volume grows automatically when usage reaches the specified threshold","The volume can shrink automatically when data is deleted, if configured","The physical underlying aggregate size is automatically increased","The storage administrator is automatically demoted to read-only"],a:[0,1],e:"L'autosize de volume permet d'augmenter automatiquement la taille du volume lorsque le seuil d'utilisation est atteint, et peut également le réduire (shrink) lorsque de l'espace est libéré (si le mode grow_shrink est activé). Cela n'augmente pas automatiquement l'agrégat sous-jacent.",d:"Configure volume autosize"},
+{i:65,s:"v",t:"Which two components are required to configure an iSCSI session from a Windows host to an ONTAP storage system? (Choose two.)",o:["iSCSI data LIF on the storage SVM","Microsoft iSCSI Initiator on the Windows host","Fibre Channel switch zoning","An active NFS export policy"],a:[0,1],e:"Pour iSCSI, l'hôte Windows utilise le service Microsoft iSCSI Initiator pour se connecter aux iSCSI data LIFs configurées sur la SVM NetApp. Le zoning FC et les export policies concernent respectivement le Fibre Channel et NFS.",d:"Configure iSCSI storage connections"},
+{i:66,s:"v",t:"An administrator notices that Snapshot copies are automatically being deleted before their scheduled retention time. Which feature is most likely causing this behavior?",o:["Snapshot autodelete","SnapMirror auto-update","Volume deduplication","QoS maximum throughput limit"],a:[0],e:"La fonction `Snapshot autodelete` supprime automatiquement les copies Snapshot les plus anciennes selon des règles prédéfinies lorsque l'espace réservé aux snapshots ou l'agrégat atteint un seuil critique d'occupation.",d:"Configure Snapshot autodelete"},
+{i:67,s:"v",t:"Which two methods can be used to migrate a LUN nondisruptively from one volume to another within the same SVM? (Choose two.)",o:["Volume move","LUN move command","SnapMirror synchronous","Storage vMotion"],a:[0,1],e:"ONTA P permet de déplacer une LUN soit en déplaçant le volume entier (`volume move`) sans interruption, soit en utilisant la commande `lun move` d'un volume à un autre au sein de la même SVM.",d:"Move a LUN or volume"},
+{i:68,s:"v",t:"What is the maximum number of nodes supported in an ONTAP SAN or NAS cluster for modern clustered architectures (such as AFF/FAS)?",o:["2 nodes for SAN, 8 nodes for NAS","12 nodes for NAS, 6 nodes for SAN","24 nodes for NAS, 12 nodes for SAN","32 nodes for NAS, 12 nodes for SAN"],a:[2],e:"Pour les clusters ONTAP modernes, la limite maximale supportée est de 24 nœuds pour les charges NAS et de 12 nœuds pour les charges SAN.",d:"ONTAP software limits and configuration guidelines"},
+{i:69,s:"v",t:"Which two protocols are supported for cluster interconnect communication in modern ONTAP HA clusters? (Choose two.)",o:["10GbE / 25GbE / 40GbE / 100GbE Ethernet","InfiniBand QDR","Dedicated cluster interconnect switches or switchless interconnect cables","USB 3.0 direct attach"],a:[0,2],e:"Le réseau d'interconnexion de cluster ONTAP s'appuie sur des liaisons Ethernet haute vitesse (10GbE, 25GbE, 40GbE, 100GbE) via des commutateurs dédiés ou en configuration switchless (sans commutateur) pour les paires HA et petits clusters.",d:"Cluster interconnect network requirements"},
+{i:70,s:"v",t:"Which ONTAP feature allows administrators to prevent unauthorized modification of configuration settings by requiring multiple approvals?",o:["Multi-Admin Verification (MAV)","Role-Based Access Control (RBAC)","NetApp Volume Encryption","Audit logging"],a:[0],e:"Multi-Admin Verification (MAV) introduit un workflow d'approbation où certaines commandes sensibles (suppression de volume, modification de sécurité, etc.) requièrent l'approbation d'un ou plusieurs administrateurs distincts avant d'être exécutées.",d:"Multi-Admin Verification overview"},
+{i:71,s:"v",t:"An administrator needs to verify the health and status of hardware components, power supplies, and environmental sensors across the cluster. Which command is best suited?",o:["system node environment shelf show","storage aggregate show","network interface show","vserver show"],a:[0],e:"La commande `system node environment` (ou `environment shelf show`, `system environmental show`) permet d'inspecter l'état physique du matériel, des ventilateurs, des alimentations et des capteurs de température.",d:"Monitor hardware health in ONTAP"},
+{i:72,s:"v",t:"Which two statements are true regarding FlexGroup volumes in ONTAP? (Choose two.)",o:["A FlexGroup volume is composed of multiple member volumes distributed across multiple aggregates","FlexGroup volumes require manual balancing of files across constituent volumes","FlexGroup volumes provide massive scalability for high-performance and big data workloads","FlexGroup volumes cannot be resized after creation"],a:[0,2],e:"Un volume FlexGroup est constitué de plusieurs volumes membres (constituents) répartis sur plusieurs agrégats et gérés comme un espace unique, offrant une scalabilité massive et des performances élevées pour les gros volumes de données.",d:"FlexGroup volumes overview"},
+{i:73,s:"v",t:"When configuring a SnapMirror asynchronous relationship, what determines the frequency of data transfers?",o:["The assigned SnapMirror schedule","The physical speed of the CPU cache","The number of LUNs mapped in the SVM","The MTU size of the cluster management network"],a:[0],e:"La fréquence des transferts SnapMirror asynchrones est dictée par le planning (schedule) associé à la relation SnapMirror.",d:"Configure SnapMirror schedules"},
+{i:74,s:"v",t:"Which two actions are required to configure LDAP for user authentication on an ONTAP SVM? (Choose two.)",o:["Create an LDAP client configuration specifying server IPs and schema","Bind the LDAP client configuration to the SVM","Enable LDAP directly on the physical disk shelves","Disable all local user accounts on the cluster"],a:[0,1],e:"La configuration LDAP sur une SVM nécessite de définir un client LDAP (serveurs, port, base DN, schéma) puis d'associer (bind) ce client à la SVM pour l'authentification et la résolution d'identité.",d:"Configure LDAP on an SVM"},
+{i:75,s:"v",t:"Which command displays active CIFS sessions and open files on an ONTAP storage system?",o:["vserver cifs session show","storage aggregate show","network interface show","qos statistics show"],a:[0],e:"La commande `vserver cifs session show` liste les sessions SMB/CIFS actives connectées à la SVM, permettant d'inspecter les utilisateurs connectés et les fichiers ouverts.",d:"Monitor CIFS sessions"},
+{i:76,s:"v",t:"What is the primary function of the ONTAP AutoSupport feature?",o:["Automatically collect and send diagnostic telemetry and health logs to NetApp support","Provide real-time block-level replication between two distant data centers","Encrypt all data packets traversing the internal cluster network","Manage user permissions via Active Directory integration"],a:[0],e:"AutoSupport (ASUP) collecte automatiquement des journaux de diagnostic, des alertes et des métriques système et les transmet à NetApp (et/ou au support interne) pour proactive maintenance et dépannage.",d:"Configure AutoSupport"},
+{i:77,s:"v",t:"Which two storage efficiency mechanisms operate inline in real time as data is written to an AFF aggregate? (Choose two.)",o:["Inline compression","Inline compaction","Background deduplication scanner","Monthly scrub"],a:[0,1],e:"Sur les systèmes AFF, la compression en ligne (inline compression) et la compaction (inline compaction) traitent les données à la volée dans la NVRAM/mémoire avant écriture sur disque, tandis que la déduplication s'exécute à la fois en ligne et en arrière-plan.",d:"AFF storage efficiency features"},
+{i:78,s:"v",t:"Which network entity defines a collection of physical ports that share the same broadcast domain?",o:["A broadcast domain","An IPspace","A subnet","An interface group"],a:[0],e:"Un domaine de diffusion (broadcast domain) regroupe des ports physiques (ou des VLANs sur ports) qui partagent un même domaine de niveau 2 (broadcast domain).",d:"Configure broadcast domains"},
+{i:79,s:"v",t:"When troubleshooting network connectivity issues for a data LIF, which command tests IP reachability from the ONTAP node to a gateway or host?",o:["network ping","network interface show","network port show","network ipspace show"],a:[0],e:"La commande `network ping` (ou `network ping6`) permet d'émettre des requêtes ICMP Echo depuis un nœud ou une LIF spécifique pour tester la connectivité IP.",d:"Network diagnostics commands"},
+{i:80,s:"v",t:"Which two statements are true regarding Snapshot copies in ONTAP? (Choose two.)",o:["Snapshot copies are read-only point-in-time images of a volume","Snapshot copies consume space only as data blocks in the active file system change","Snapshot copies require a full backup window of 4 hours before creation","Snapshot copies cannot be used to restore individual files"],a:[0,1],e:"Les copies Snapshot sont des images instantanées en lecture seule qui ne consomment initialement aucun espace supplémentaire ; elles ne consomment de l'espace que lorsque les blocs modifiés du système de fichiers actif divergent. De plus, il est possible de restaurer des fichiers individuels depuis un Snapshot.",d:"How Snapshot copies work"},
+{i:81,s:"v",t:"An administrator wants to ensure that a specific volume cannot exceed 500 GB of physical capacity. Which feature should be configured?",o:["Volume size limit / guarantee","Snapshot reserve","FabricPool tiering policy","QoS throughput floor"],a:[0],e:"La taille maximale d'un volume (`volume size`) définit sa limite supérieure. Pour garantir ou plafonner l'espace, on configure la taille du volume et éventuellement ses paramètres de garantie d'espace (none, volume, file).",d:"Manage volume size and guarantees"},
+{i:82,s:"v",t:"Which two security hardening tasks are recommended after deploying a new ONTAP cluster? (Choose two.)",o:["Disable insecure protocols such as HTTP and Telnet","Configure strong administrative passwords and SSH keys","Enable unencrypted cleartext SNMPv1 communities","Open all firewall ports to external public networks"],a:[0,1],e:"Le durcissement de sécurité (security hardening) recommande de désactiver les protocoles non sécurisés (HTTP, Telnet, SNMPv1/v2c en clair) et d'imposer des mots de passe robustes ainsi que l'authentification par clé SSH.",d:"ONTAP security hardening guide"},
+{i:83,s:"v",t:"Which ONTAP command displays the cluster node quorum status and cluster reachability?",o:["cluster ring show","cluster show","system node show","network interface show"],a:[0],e:"La commande `cluster ring show` affiche l'état des anneaux de base de données du cluster (quorum status), garantissant que les services de gestion et de configuration dialoguent correctement entre nœuds.",d:"Monitor cluster quorum and rings"},
+{i:84,s:"v",t:"Which feature allows an ONTAP administrator to clone an existing LUN instantly without consuming extra storage space initially?",o:["FlexClone","SnapMirror","FabricPool","Flash Pool"],a:[0],e:"FlexClone crée des copies virtuelles en lecture/écriture instantanées (clones) de volumes, fichiers ou LUNs en utilisant l'architecture de pointeurs Snapshot, sans consommer d'espace supplémentaire au moment de la création.",d:"FlexClone technology overview"},
+{i:85,s:"v",t:"When configuring QoS (Quality of Service) in ONTAP, what is the difference between a throughput ceiling and a throughput floor?",o:["A ceiling limits maximum IOPS/MBps, whereas a floor guarantees minimum performance","A ceiling guarantees performance, whereas a floor restricts bandwidth","A ceiling applies only to NFS, whereas a floor applies only to SAN","There is no difference; both terms are interchangeable"],a:[0],e:"Un plafond (ceiling) fixe une limite supérieure à ne pas dépasser (pour éviter qu'une charge n'asphyxie la baie), tandis qu'un plancher (floor) garantit un niveau de performance minimal (IOPS/débit) pour les charges critiques.",d:"QoS ceiling and floor definitions"},
+{i:86,s:"v",t:"Which two actions are required to add a new disk shelf to an existing FAS HA pair?",o:["Cable the SAS or IOM connections correctly in a loop or multipath multi-stack configuration","Assign ownership of the new disks to the appropriate nodes","Reinstall the ONTAP operating system from scratch","Recreate all existing data SVMs"],a:[0,1],e:"L'ajout d'un tiroir disque (disk shelf) implique un câblage physique correct (SAS multi-path) puis l'attribution (ownership) des nouveaux disques aux contrôleurs de la paire HA pour qu'ils puissent être intégrés aux agrégats.",d:"Add disk shelves and assign ownership"},
+{i:87,s:"v",t:"Which ONTAP license type enables software features such as SnapMirror, SnapVault, and FlexClone on a node?",o:["Capacity-based or node-locked feature licenses","Windows Client CAL licenses","Active Directory Enterprise licenses","BIOS activation keys"],a:[0],e:"Les licences ONTAP sont soit basées sur la capacité (capacity licenses), soit liées aux nœuds (node-locked licenses) pour activer des fonctionnalités logicielles spécifiques comme SnapMirror ou FlexClone.",d:"ONTAP licensing overview"},
+{i:88,s:"v",t:"Which tool should an administrator use to check configuration compliance and best practices before upgrading ONTAP?",o:["Active IQ Config Advisor","ONTAP System Manager drag-and-drop","NetApp Harvest","Windows Disk Management"],a:[0],e:"Active IQ Config Advisor est l'outil de validation par excellence pour vérifier la configuration, le câblage, le firmware et la conformité aux bonnes pratiques avant toute mise à niveau d'ONTAP.",d:"Config Advisor pre-upgrade validation"},
+{i:89,s:"v",t:"Which two protocols are used by ONTAP to provide file-level (NAS) storage access to clients? (Choose two.)",o:["NFS","SMB / CIFS","iSCSI","Fibre Channel (FCP)"],a:[0,1],e:"NFS (Network File System) et SMB/CIFS (Server Message Block) sont les deux protocoles NAS standard pris en charge par ONTAP pour l'accès aux fichiers. iSCSI et FCP sont des protocoles bloc (SAN).",d:"NAS protocols in ONTAP"},
+{i:90,s:"v",t:"An administrator wants to restrict a specific SVM administrator so they can only manage network interfaces and nothing else. Which RBAC feature enables this?",o:["Custom roles with specific command directories and access privileges","Cluster root password sharing","FabricPool tiering policies","Disabling all SVM logs"],a:[0],e:"Le RBAC (Role-Based Access Control) permet de créer des rôles personnalisés (custom roles) restreignant l'accès aux seules commandes ou familles de commandes souhaitées (par exemple, la gestion réseau).",d:"Configure RBAC custom roles"},
+{i:91,s:"v",t:"What is the purpose of an interface group (ifgrp) in ONTAP networking?",o:["To combine multiple physical network ports into a single logical port for redundancy and increased bandwidth","To encrypt network packets between storage nodes","To isolate tenant IP addresses in separate virtual routers","To map LUNs to specific SAN hosts"],a:[0],e:"Un interface group (ifgrp) agrège plusieurs ports physiques (mode multimode LACP, static ou failover single-mode) afin de fournir de la haute disponibilité (redondance) et d'agréger la bande passante réseau.",d:"Configure interface groups"},
+{i:92,s:"v",t:"Which two types of storage tiering policies are available when using FabricPool? (Choose two.)",o:["Snapshot-only","Auto","Manual-only","All"],a:[1,3],e:"FabricPool propose plusieurs politiques de tiering : `auto` (données lues et écrites déplacées selon l'activité), `all` (toutes les données déplacées immédiatement), `snapshot-only` (seuls les blocs des snapshots inactifs sont déplacés) et `none`.",d:"FabricPool tiering policies"},
+{i:93,s:"v",t:"Which ONTAP command displays performance statistics for CPU, disk, and network utilization in real time?",o:["run -node * -command sysstat -x 1","storage aggregate show","network interface show","vserver show"],a:[0],e:"La commande `run -node * -command sysstat -x 1` exécute l'utilitaire classique sysstat sur tous les nœuds pour afficher en temps réel l'utilisation du processeur, les IOPS, le débit et la latence.",d:"Monitor performance with sysstat"},
+{i:94,s:"v",t:"What is required before you can delete an IPspace in ONTAP?",o:["All broadcast domains, subnets, and LIFs associated with the IPspace must be removed or reassigned","The entire cluster must be rebooted into maintenance mode","All volumes in the cluster must be converted to thick provisioning","SnapMirror relationships must be converted to synchronous mode"],a:[0],e:"Pour supprimer un IPspace, il faut impérativement qu'aucun objet réseau (domaines de diffusion, sous-réseaux, LIFs) n'y soit plus rattaché.",d:"Delete an IPspace"},
+{i:95,s:"v",t:"Which two features are provided by MetroCluster IP architectures? (Choose two.)",o:["Synchronous replication of data across two sites using standard IP switches","Automatic transparent failover of storage and client connections during a site disaster","Asynchronous replication only with a 24-hour RPO window","Requirement for dedicated dark fiber Fibre Channel switches"],a:[0,1],e:"MetroCluster IP assure la réplication synchrone et le basculement transparent (transparent failover) des données et des accès entre deux sites en s'appuyant sur des réseaux IP standard (sans nécessiter de switches FC dédiés sombres).",d:"MetroCluster IP architecture overview"},
+{i:96,s:"v",t:"An administrator wants to track user file access on an SMB share for auditing and compliance purposes. Which feature should be enabled?",o:["ONTAP audit logging / security auditing","FabricPool tiering","Flash Cache acceleration","QoS throughput ceiling"],a:[0],e:"L'audit de sécurité ONTAP (security auditing) permet d'enregistrer les accès aux fichiers (lectures, écritures, modifications de permissions) pour les protocoles SMB et NFS dans des journaux consultables ou exportables vers Syslog.",d:"Configure audit logging for SMB and NFS"},
+{i:97,s:"v",t:"Which two parameters are configured when creating a new SVM data LIF? (Choose two.)",o:["IP address and netmask","Home node and home port","BIOS serial number","ONTAP root password"],a:[0,1],e:"La création d'une LIF de données requiert au minimum une adresse IP, un masque de sous-réseau, ainsi qu'un nœud d'origine (home node) et un port d'origine (home port).",d:"Create a data LIF"},
+{i:98,s:"v",t:"What is the function of the storage failover (SFO) subsystem in an ONTAP HA pair?",o:["It detects partner node failures and enables automatic takeover of storage resources","It manages cloud object store authentication credentials","It coordinates DNS host name resolution across SVMs","It distributes client HTTP requests across web servers"],a:[0],e:"Le sous-système de basculement de stockage (Storage Failover / SFO) surveille en permanence la santé du nœud partenaire via l'interconnexion HA et déclenche la reprise (takeover) en cas de panne.",d:"Storage failover concepts"},
+{i:99,s:"v",t:"Which two actions should be performed before replacing a failed controller module in an ONTAP HA pair? (Choose two.)",o:["Verify hardware replacement prerequisites and grounding precautions","Gather system configuration information and ensure partner node is healthy and online","Format all data disks in the storage shelves","Downgrade the cluster ONTAP version to match the replacement part"],a:[0,1],e:"Avant de remplacer un contrôleur défectueux, il faut vérifier les conditions préalables matérielles, s'assurer que le nœud partenaire est sain, opérationnel et prêt à assumer la charge (takeover), et collecter les informations de configuration.",d:"Controller replacement procedure"},
+{i:100,s:"v",t:"Which ONTAP feature protects against accidental or malicious deletion of Snapshot copies by locking them for a defined retention period?",o:["Tamperproof snapshots (Snapshot lock)","QoS throughput floor","FlexCache pre-population","AutoSupport telemetry"],a:[0],e:"Les Tamperproof snapshots (ou Snapshot lock) permettent de verrouiller des copies Snapshot pour une durée déterminée, empêchant leur suppression même par un administrateur root ou compromis.",d:"Lock Snapshot copies against deletion"},
+{i:101,s:"v",t:"Which two options are valid data protection relationship types in ONTAP SnapMirror? (Choose two.)",o:["XDP (Extended Data Protection)","DP (Data Protection - legacy)","HTTP-Direct","USB-Sync"],a:[0,1],e:"Les types de relations SnapMirror officiels dans ONTAP sont XDP (recommandé, moderne) et DP (mode historique de transition).",d:"SnapMirror relationship types"},
+{i:102,s:"v",t:"An administrator needs to check the status of all network interfaces in a cluster, including their current port and operational status. Which command should be used?",o:["network interface show","storage aggregate show","vserver show","cluster ring show"],a:[0],e:"La commande `network interface show` liste toutes les LIFs (data, cluster, management) du cluster avec leur adresse IP, leur nœud courant, leur port courant et leur état opérationnel.",d:"Display network interfaces"},
+{i:103,s:"v",t:"Which two methods can be used to authenticate administrators logging into ONTAP CLI or System Manager? (Choose two.)",o:["Local cluster user accounts","Centralized authentication via LDAP, RADIUS, or Active Directory","Direct root access via unencrypted Telnet","Bluetooth proximity tokens"],a:[0,1],e:"ONTAP prend en charge l'authentification locale des administrateurs ainsi que l'authentification centralisée par annuaire (LDAP, Active Directory ou RADIUS).",d:"Configure administrator authentication"},
+{i:104,s:"v",t:"What is the primary benefit of using Flash Pool aggregates?",o:["Combining SSD performance for read/write caching with high-capacity HDD storage for cost-effective capacity","Replicating data across public cloud object stores in real time","Providing block-level virtualization for VMware ESXi datastores","Eliminating the need for RAID protection"],a:[0],e:"Flash Pool associe des disques SSD (utilisés comme cache en lecture/écriture) et des disques durs mécaniques (HDD) dans le même agrégat, combinant ainsi la performance du flash et le coût avantageux des disques à grande capacité.",d:"Flash Pool aggregate architecture"},
+{i:105,s:"v",t:"Which ONTAP command verifies whether a newly added node has successfully joined the cluster and is in normal operational state?",o:["cluster show","volume show","network port show","license show"],a:[0],e:"La commande `cluster show` affiche la liste des nœuds membres du cluster ainsi que leur état de santé et d'appartenance.",d:"Verify cluster node membership"},
+{i:106,s:"v",t:"Which two entities are required when configuring an NFS export policy rule? (Choose two.)",o:["Client specification (IP address, subnet, or netgroup)","Access protocols (e.g., nfs3, nfs4)","Hardware disk serial number","Active Directory domain trust password"],a:[0,1],e:"Une règle d'export policy NFS spécifie les clients concernés (adresse IP, sous-réseau) et les protocoles autorisés (NFSv3, NFSv4), ainsi que les droits de lecture/écriture.",d:"Create export policy rules"},
+{i:107,s:"v",t:"Which NetApp tool provides AI-powered predictive analytics, health monitoring, and capacity forecasting for ONTAP environments?",o:["Active IQ Digital Advisor (AutoSupport / Active IQ)","Windows Notepad","PuTTY SSH client","Wireshark packet analyzer"],a:[0],e:"Active IQ Digital Advisor analyse les données AutoSupport collectées pour fournir des prédictions, des alertes de risque, des recommandations de mise à niveau et des prévisions de capacité basées sur l'intelligence artificielle.",d:"Active IQ Digital Advisor features"},
+{i:108,s:"v",t:"When a volume is nearly full, which feature can be used to automatically add space up to a predefined maximum limit?",o:["Volume autosize","Snapshot autodelete","FabricPool tiering","QoS throughput floor"],a:[0],e:"Le paramètre `volume autosize` permet d'augmenter automatiquement la taille d'un volume lorsque l'utilisation approche du seuil déclencheur, jusqu'à une limite maximale fixée.",d:"Configure volume autosize"},
+{i:109,s:"v",t:"Which two actions are performed during a storage failover takeover operation? (Choose two.)",o:["The surviving node takes over the storage resources and serves I/O for the failed partner node","Data LIFs hosted on the failed node migrate to ports on the surviving node","All client connections are permanently terminated without possibility of recovery","The failed node's data disks are permanently reformatted"],a:[0,1],e:"Lors d'un takeover, le nœud survivant prend en charge les disques et volumes du partenaire défaillant, et les LIFs migrantes basculent vers les ports du nœud survivant pour maintenir l'accès des clients.",d:"Storage failover takeover process"},
+{i:110,s:"v",t:"What is the function of an ONTAP broadcast domain?",o:["It groups ports that belong to the same Layer 2 broadcast domain and defines the MTU","It encrypts all network traffic traversing switch ports","It acts as an external DNS server for the cluster","It stores permanent volume encryption keys"],a:[0],e:"Un broadcast domain regroupe des ports physiques ou des VLANs de niveau 2 partageant le même domaine de diffusion et définit la taille du MTU (par exemple 1500 ou 9000).",d:"Broadcast domains in ONTAP"},
+{i:111,s:"v",t:"Which two statements are true regarding SnapMirror active sync (formerly SM-BC)? (Choose two.)",o:["It provides synchronous, zero-RPO, active-active data protection for SAN LUNs and namespaces","It allows read-write access on both primary and secondary storage systems simultaneously for active-active workloads","It requires a 24-hour backup window before synchronization begins","It is restricted exclusively to NAS NFSv3 exports"],a:[0,1],e:"SnapMirror active sync (SnapMirror Business Continuity) offre une protection synchrone active-active sans perte de données (RPO zéro) pour les charges SAN (LUNs/namespaces), permettant des écritures et lectures hautement résilientes.",d:"SnapMirror active sync overview"},
+{i:112,s:"v",t:"Which command is used to create a new storage virtual machine (SVM) in ONTAP?",o:["vserver create","volume create","aggregate create","cluster create"],a:[0],e:"La commande `vserver create` (ou `vserver create -vserver <name> -root-volume <vol> -root-volume-aggregate <aggr>`) est utilisée pour instancier une nouvelle SVM.",d:"Create an SVM"},
+{i:113,s:"v",t:"When configuring IPsec in ONTAP, what is being protected?",o:["IP traffic over the wire (encryption and authentication between nodes or clients)","Physical power supply units against electrical surges","Admin password complexity requirements","Snapshot copies against accidental deletion"],a:[0],e:"IPsec chiffre et authentifie le trafic IP en transit sur le réseau, protégeant ainsi les communications réseau (cluster, réplication ou données) contre l'écoute clandestine et l'usurpation.",d:"Configure IPsec security"},
+{i:114,s:"v",t:"Which two metrics are typically monitored to diagnose storage performance bottlenecks using ONTAP QoS or statistics? (Choose two.)",o:["Latency (response time in milliseconds)","IOPS (Input/Output Operations Per Second)","BIOS version number","Enclosure chassis color"],a:[0,1],e:"Pour diagnostiquer les goulots d'étranglement, on analyse principalement la latence (temps de réponse) et les IOPS / débit (throughput) fournis par les outils de statistiques ONTAP.",d:"Diagnose performance with latency and IOPS"},
+{i:115,s:"v",t:"What is the function of the ONTAP NetApp Account / Console cloud management portal?",o:["Centralized cloud management, deployment, and monitoring of hybrid cloud storage services across AWS, Azure, GCP, and on-premises","Local terminal emulation for serial console cables","Static web page hosting for personal portfolios","Windows Active Directory domain controller replication"],a:[0],e:"NetApp Console (anciennement Cloud Manager / BlueXP) centralise la gestion, le déploiement et la surveillance des environnements de stockage hybrides et multicloud NetApp.",d:"NetApp Console overview"},
+{i:116,s:"v",t:"Which ONTAP feature allows multiple LUNs to be grouped together and mapped to a set of initiator WWPNs or IQNs?",o:["An igroup (initiator group)","An export policy","A broadcast domain","An IPspace"],a:[0],e:"Un igroup (initiator group) regroupe les identifiants des hôtes SAN (WWPN pour Fibre Channel ou IQN pour iSCSI) afin de contrôler l'accès (mapping) aux LUNs ou namespaces.",d:"Create and manage igroups"},
+{i:117,s:"v",t:"Which two actions are required to successfully expand an existing aggregate by adding new disks? (Choose two.)",o:["Select available unowned or owned disks matching the aggregate disk type","Use the `storage aggregate add-disks` command","Recreate all volumes inside the aggregate from scratch","Restart all client applications accessing the storage"],a:[0,1],e:"Pour étendre un agrégat, on utilise des disques disponibles compatibles et la commande `storage aggregate add-disks`. Les volumes existants ne sont ni recréés ni interrompus.",d:"Expand an aggregate with new disks"},
+{i:118,s:"v",t:"What is the primary role of an intercluster LIF in ONTAP?",o:["Handling secure replication and communication traffic between distinct ONTAP clusters (e.g., SnapMirror)","Providing direct CIFS file shares to end-user workstations","Connecting physical disk shelves to controller nodes","Booting the ONTAP kernel from local USB drives"],a:[0],e:"Les LIFs intercluster sont dédiées au trafic de peering entre différents clusters, indispensable pour la réplication SnapMirror inter-cluster et le peering SVM.",d:"Configure intercluster LIFs"},
+{i:119,s:"v",t:"Which ONTAP command displays the current license status and installed feature licenses on the cluster?",o:["license show","vserver show","network interface show","cluster ring show"],a:[0],e:"La commande `license show` (ou `system license show`) liste les licences de fonctionnalités installées sur le cluster ainsi que leur état de validité.",d:"Manage ONTAP licenses"},
+{i:120,s:"v",t:"When an administrator performs a graceful switchback in a MetroCluster configuration, what occurs?",o:["Primary site operations and storage ownership are safely restored to the primary site after recovery","All storage arrays are permanently wiped and reset to factory defaults","The cluster is converted from SAN to NAS storage exclusively","All client licenses are automatically revoked"],a:[0],e:"Le switchback (notamment graceful switchback) dans MetroCluster rétablit les opérations et la direction du stockage vers le site principal une fois la panne résorbée et les données resynchronisées.",d:"Perform MetroCluster switchback"}];
+const STATUS={v:{t:"Validée",c:"ok"},n:{t:"À nuancer",c:"gold"},c:{t:"Corrigée",c:"red"}};
+const EXAM_SECONDS=90*60;
+const $=s=>document.querySelector(s);
+const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+function getStats(){try{return JSON.parse(ls.get("ncda_stats"))||{pa:0,pc:0,exams:[]}}catch(e){return{pa:0,pc:0,exams:[]}}}
+function setStats(v){ls.set("ncda_stats",JSON.stringify(v))}
+
+const state={mode:null,cur:0,view:[],sel:{},val:{},flags:{},ok:0,done:0,timer:null,left:EXAM_SECONDS,lastWrong:[]};
+state.view=QUESTIONS.map((_,i)=>i);
+
+/* ---------- Utilitaires UI ---------- */
+let toastT;
+function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,2600)}
+function badge(txt,cls){const s=document.createElement("span");s.className="badge "+cls;s.textContent=txt;return s}
+function show(id){["home","quiz","results"].forEach(s=>$("#"+s).hidden=(s!==id));fit()}
+/* Ajustement automatique : réduit l'échelle (--s) jusqu'à ce que la page tienne dans l'écran, sans ascenseur */
+const SCALE_MIN=.5;
+let fitRaf=0;
+function baseScale(){
+  const k=[1,1.12,1.25][parseInt(document.documentElement.dataset.size||"0",10)]||1;
+  return Math.min((innerWidth<=640?.85:.95)*k,1.3);
+}
+function fitNow(){
+  const root=document.documentElement,m=document.querySelector("main");
+  let s=baseScale();root.style.setProperty("--s",s.toFixed(3));
+  let n=0;
+  while(m.scrollHeight>m.clientHeight+1&&s>SCALE_MIN&&n++<60){s=Math.max(SCALE_MIN,s-.02);root.style.setProperty("--s",s.toFixed(3))}
+  return s;
+}
+function fit(){fitNow();cancelAnimationFrame(fitRaf);fitRaf=requestAnimationFrame(fitNow)} /* immédiat (pas de scintillement) + repasse après mise en page */
+addEventListener("resize",fit);addEventListener("orientationchange",fit);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+function fmt(s){s=Math.max(0,s);return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function letters(arr){return arr.length?arr.map(i=>String.fromCharCode(65+i)).join(", "):"—"}
+function isGood(q){const sel=state.sel[q.i]||[];return sel.length===q.a.length&&sel.every(x=>q.a.includes(x))}
+function examLive(){let ok=0,n=0;QUESTIONS.forEach(q=>{if((state.sel[q.i]||[]).length){n++;if(isGood(q))ok++}});return{ok,n}}
+function updateScore(){
+  if(state.mode==="practice"){
+    $("#scoreVal").textContent=state.ok+" / "+state.done;
+    $("#qMini").textContent="Session : "+state.ok+" bonne(s) / "+state.done+" validée(s)";
+  }else if(state.mode==="exam"){
+    const r=examLive();
+    $("#scoreVal").textContent=r.ok+" / "+r.n;
+    $("#qMini").textContent="Examen : "+r.ok+" bonne(s) / "+r.n+" répondue(s)";
+  }else{$("#scoreVal").textContent="0 / 0";$("#qMini").textContent=""}
+}
+
+/* ---------- Rendu de la question ---------- */
+function render(){
+  const q=QUESTIONS[state.view[state.cur]];
+  $("#qCount").textContent="Question "+(state.cur+1)+" / "+state.view.length;
+  $("#qProg").style.width=((state.cur+1)/state.view.length*100)+"%";
+  const bd=$("#qBadges");bd.innerHTML="";
+  if(q.a.length>1)bd.appendChild(badge(q.a.length+" réponses","info"));
+  if(state.mode!=="exam"){const st=STATUS[q.s];bd.appendChild(badge(st.t,st.c))}
+  $("#qText").textContent=q.t;
+  $("#qHint").textContent=q.a.length>1?("Sélectionnez "+q.a.length+" réponses."):"Sélectionnez la bonne réponse.";
+  const done=state.mode==="practice"&&!!state.val[q.i];
+  const sel=state.sel[q.i]||[];
+  const box=$("#qOpts");box.innerHTML="";
+  q.o.forEach((opt,idx)=>{
+    const b=document.createElement("button");b.type="button";b.className="opt";
+    const isSel=sel.includes(idx),isAns=q.a.includes(idx);
+    if(isSel)b.classList.add("sel");
+    if(done){if(isAns)b.classList.add("ok");else if(isSel)b.classList.add("bad");b.disabled=true}
+    b.innerHTML='<span class="let">'+String.fromCharCode(65+idx)+'</span><span class="otxt"></span><span class="mark"></span>';
+    b.querySelector(".otxt").textContent=opt;
+    b.querySelector(".mark").textContent=done?(isAns?"✓":(isSel?"✗":"")):(isSel?"●":"");
+    b.addEventListener("click",()=>toggleOpt(state.view[state.cur],idx));
+    box.appendChild(b);
+  });
+  const ex=$("#expBox");
+  if(done){
+    ex.hidden=false;ex.innerHTML="";
+    const good=isGood(q);
+    const h=document.createElement("div");h.className="exphead "+(good?"good":"miss");
+    h.textContent=good?"✓ Bonne réponse !":"✗ Réponse incorrecte — bonne(s) réponse(s) : "+letters(q.a);
+    const p=document.createElement("p");p.textContent=q.e;
+    const d=document.createElement("p");d.className="doc";d.textContent="📄 Documentation NetApp : "+q.d;
+    ex.append(h,p,d);
+  }else ex.hidden=true;
+  const last=state.cur===state.view.length-1;
+  $("#btnPrev").disabled=state.cur===0;
+  $("#btnVal").disabled=done||!sel.length;
+  const finalExam=state.mode==="exam"&&last;
+  $("#btnNext").disabled=last&&!finalExam;
+  $("#btnNext").textContent=finalExam?"Valider l'examen ✓":"Suivant →";
+  $("#btnNext").setAttribute("aria-label",finalExam?"Valider et soumettre l'examen":"Question suivante");
+  /* Examen : pas de bouton Valider ; Suivant devient le bouton principal */
+  $("#btnVal").hidden=state.mode==="exam";
+  $("#btnNext").classList.toggle("btn-primary",state.mode==="exam");
+  $("#btnNext").classList.toggle("btn",state.mode==="exam");
+  $("#btnNext").classList.toggle("btn-plain",state.mode!=="exam");
+  if(state.mode==="exam"){
+    $("#exCount").textContent="Répondues : "+QUESTIONS.filter(x=>(state.sel[x.i]||[]).length).length+" / "+QUESTIONS.length;
+    $("#btnFlag").textContent=state.flags[q.i]?"🚩 Marquée":"🚩 Marquer";
+    renderGrid();
+  }
+  updateScore();fit();
+}
+function toggleOpt(qIdx,optIdx){
+  const q=QUESTIONS[qIdx];
+  if(state.mode==="practice"&&state.val[q.i])return;
+  let sel=state.sel[q.i]||[];
+  sel=(q.a.length===1)?[optIdx]:(sel.includes(optIdx)?sel.filter(x=>x!==optIdx):sel.concat(optIdx));
+  state.sel[q.i]=sel;render();
+}
+function renderGrid(){
+  const g=$("#navGrid");g.innerHTML="";
+  QUESTIONS.forEach((q,i)=>{
+    const b=document.createElement("button");b.textContent=i+1;
+    if((state.sel[q.i]||[]).length)b.classList.add("ans");
+    if(state.view[state.cur]===i)b.classList.add("cur");
+    if(state.flags[q.i])b.classList.add("flg");
+    b.addEventListener("click",()=>{
+      state.cur=i;
+      g.classList.add("collapsed");$("#btnGrid").setAttribute("aria-expanded","false");
+      render();
+    });
+    g.appendChild(b);
+  });
+}
+function gotoQuestion(qIdx){
+  if(!state.view.includes(qIdx))state.view=QUESTIONS.map((_,i)=>i);
+  state.cur=state.view.indexOf(qIdx);render();
+}
+
+/* ---------- Modes ---------- */
+function startPractice(list){
+  clearInterval(state.timer);
+  state.mode="practice";state.cur=0;state.sel={};state.val={};state.flags={};state.ok=0;state.done=0;
+  state.view=(list&&list.length)?list.slice():QUESTIONS.map((_,i)=>i);
+  $("#examBar").hidden=true;$("#navGrid").hidden=true;$("#prActions").hidden=false;
+  keepAwake(false);pushSession();
+  show("quiz");render();window.scrollTo({top:0,behavior:"smooth"});
+}
+function startExam(){
+  clearInterval(state.timer);
+  state.mode="exam";state.cur=0;state.sel={};state.val={};state.flags={};state.left=EXAM_SECONDS;
+  state.view=QUESTIONS.map((_,i)=>i);
+  /* La liste des questions n'est plus affichée d'office : elle reste repliée, ouvrable via « Grille » */
+  $("#examBar").hidden=false;$("#navGrid").hidden=false;$("#prActions").hidden=false;
+  $("#navGrid").classList.add("collapsed");$("#btnGrid").setAttribute("aria-expanded","false");
+  show("quiz");
+  $("#exTimer").classList.remove("warn");$("#exTimer").textContent="⏱ "+fmt(state.left);
+  /* Minuteur basé sur l'heure réelle : reste exact même si Android met l'onglet en veille */
+  state.deadline=Date.now()+EXAM_SECONDS*1000;
+  const tick=()=>{
+    state.left=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));
+    $("#exTimer").textContent="⏱ "+fmt(state.left);
+    if(state.left<=300)$("#exTimer").classList.add("warn");
+    if(state.left<=0){clearInterval(state.timer);toast("Temps écoulé — soumission automatique.");submitExam(true)}
+  };
+  state.timer=setInterval(tick,1000);
+  state.tick=tick;
+  keepAwake(true);pushSession();
+  render();window.scrollTo({top:0,behavior:"smooth"});
+}
+/* ---------- Spécifique mobile : bouton Retour Android, veille, installation ---------- */
+let sessionPushed=false,skipPop=false,wakeLock=null;
+function pushSession(){if(!sessionPushed){try{history.pushState({ncda:1},"")}catch(e){}sessionPushed=true}}
+function goHome(){
+  clearInterval(state.timer);keepAwake(false);
+  state.mode=null;state.view=QUESTIONS.map((_,i)=>i);show("home");
+  if(sessionPushed){sessionPushed=false;skipPop=true;try{history.back()}catch(e){skipPop=false}}
+}
+window.addEventListener("popstate",()=>{
+  if(skipPop){skipPop=false;return}
+  sessionPushed=false;
+  if(state.mode==="exam"&&!confirm("Un examen est en cours. Quitter sans soumettre ?")){pushSession();return}
+  clearInterval(state.timer);keepAwake(false);
+  state.mode=null;state.view=QUESTIONS.map((_,i)=>i);show("home");
+});
+async function keepAwake(on){
+  try{
+    if(on&&"wakeLock" in navigator&&!wakeLock){wakeLock=await navigator.wakeLock.request("screen");wakeLock.addEventListener("release",()=>{wakeLock=null})}
+    else if(!on&&wakeLock){await wakeLock.release();wakeLock=null}
+  }catch(e){wakeLock=null}
+}
+document.addEventListener("visibilitychange",()=>{
+  if(document.visibilityState==="visible"&&state.mode==="exam"){state.tick&&state.tick();keepAwake(true)}
+});
+function quitSession(){
+  if(!confirm("Quitter la session en cours ?"))return;
+  goHome();
+}
+function confirmSubmit(){
+  const un=QUESTIONS.filter(q=>!(state.sel[q.i]||[]).length).length;
+  const fl=QUESTIONS.filter(q=>state.flags[q.i]).length;
+  const w=document.createElement("div");
+  const h3=document.createElement("h3");h3.textContent="⚠ Confirmer la validation de l'examen";
+  const p1=document.createElement("p");
+  p1.textContent="Vous êtes sur la dernière question. En validant, l'examen sera soumis et corrigé : vous ne pourrez plus modifier vos réponses.";
+  const p2=document.createElement("p");
+  p2.style.fontWeight="650";
+  p2.style.color=un?"var(--bad)":"var(--ok)";
+  p2.textContent=un?("Attention : "+un+" question(s) restent sans réponse (comptée(s) comme fausse(s))."):"Toutes les questions ont une réponse.";
+  w.append(h3,p1,p2);
+  if(fl){const p3=document.createElement("p");p3.style.color="var(--gold)";p3.textContent="🚩 "+fl+" question(s) marquée(s) à revoir. Utilisez « Grille » pour y retourner.";w.appendChild(p3)}
+  const row=document.createElement("div");row.style.cssText="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem";
+  const no=document.createElement("button");no.className="btn-plain";no.style.margin="0";no.textContent="Revenir à l'examen";no.addEventListener("click",closeModal);
+  const yes=document.createElement("button");yes.className="btn btn-primary";yes.style.cssText="margin:0;flex:1 1 auto";yes.textContent="Valider et soumettre";
+  yes.addEventListener("click",()=>{closeModal();submitExam(false,true)});
+  row.append(no,yes);w.appendChild(row);openModal(w);
+}
+function submitExam(auto,force){
+  const unanswered=QUESTIONS.filter(q=>!(state.sel[q.i]||[]).length).length;
+  if(!auto&&!force&&unanswered>0&&!confirm("Il reste "+unanswered+" question(s) sans réponse. Soumettre quand même ?"))return;
+  clearInterval(state.timer);keepAwake(false);
+  state.left=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));
+  let score=0;const detail=[];
+  QUESTIONS.forEach(q=>{
+    const sel=state.sel[q.i]||[];
+    const good=sel.length===q.a.length&&sel.every(x=>q.a.includes(x));
+    if(good)score++;detail.push({q,sel,good});
+  });
+  const used=EXAM_SECONDS-state.left;
+  const st=getStats();
+  st.exams.unshift({d:new Date().toLocaleString("fr-FR"),s:score,t:QUESTIONS.length,m:fmt(used)});
+  st.exams=st.exams.slice(0,10);setStats(st);
+  showResults(score,detail,fmt(used));
+}
+function showResults(score,detail,timeStr){
+  state.mode=null;show("results");
+  const total=QUESTIONS.length,pct=Math.round(score/total*100);
+  $("#rScore").textContent=score+" / "+total;
+  $("#rPct").textContent=pct+" %";
+  $("#rBar").style.width=pct+"%";
+  $("#rMsg").textContent=pct>=85?"Excellent niveau — vous êtes prêt pour l'examen.":pct>=70?"Bon niveau — consolidez encore les points faibles avec le mode entraînement.":"Continuez l'entraînement en mode pratique pour assimiler les explications.";
+  $("#rTime").textContent="Durée : "+timeStr+" • "+new Date().toLocaleString("fr-FR")+" • Objectif indicatif : ≥ 70 %";
+  const list=$("#rList");list.innerHTML="";
+  detail.forEach(d=>{
+    const b=document.createElement("button");b.type="button";b.className="rchip "+(d.good?"good":"miss");
+    b.setAttribute("aria-label","Question "+d.q.i+(d.good?" réussie":" ratée"));
+    b.innerHTML="Q"+d.q.i+"<small>"+(d.good?"✓":"✗")+"</small>";
+    b.addEventListener("click",()=>{
+      const w=document.createElement("div");w.className="rdetail";
+      const t=document.createElement("h3");t.textContent="Q"+d.q.i+" "+(d.good?"✓ réussie":"✗ ratée");
+      const q=document.createElement("p");q.style.fontWeight="650";q.textContent=d.q.t;
+      const r=document.createElement("p");r.textContent="Vos réponses : "+letters(d.sel)+" • Bonne réponse : "+letters(d.q.a);
+      const p=document.createElement("p");p.textContent=d.q.e;
+      const doc=document.createElement("p");doc.className="doc";doc.textContent="📄 Documentation NetApp : "+d.q.d;
+      const c=document.createElement("button");c.className="btn-plain";c.textContent="Fermer";c.addEventListener("click",closeModal);
+      w.append(t,q,r,p,doc,c);openModal(w);
+    });
+    list.appendChild(b);
+  });
+  state.lastWrong=detail.filter(d=>!d.good).map(d=>d.q.i-1);
+  $("#btnRetryWrong").hidden=!state.lastWrong.length;
+  fit();
+}
+
+/* ---------- Modales ---------- */
+function openModal(node){const b=$("#mBody");b.innerHTML="";b.appendChild(node);$("#mOv").hidden=false}
+function closeModal(){$("#mOv").hidden=true}
+$("#mOv").addEventListener("click",e=>{if(e.target===$("#mOv"))closeModal()});
+function openSearch(){
+  const w=document.createElement("div");
+  w.innerHTML='<h3>🔍 Rechercher une question</h3><input type="search" placeholder="Mot-clé : FlexCache, SnapMirror, LIF…" aria-label="Recherche">';
+  const res=document.createElement("div");res.className="sres";w.appendChild(res);
+  const inp=w.querySelector("input");
+  function run(){
+    const v=inp.value.trim().toLowerCase();res.innerHTML="";
+    if(!v)return;
+    const hits=QUESTIONS.filter(q=>(q.t+" "+q.o.join(" ")+" "+q.e).toLowerCase().includes(v)).slice(0,12);
+    if(!hits.length){res.innerHTML="<small>Aucun résultat.</small>";return}
+    hits.forEach(q=>{
+      const b=document.createElement("button");
+      b.innerHTML="<b>Q"+q.i+"</b> — "+q.t.slice(0,95)+(q.t.length>95?"…":"")+"<br><small>"+letters(q.a)+" • "+STATUS[q.s].t+"</small>";
+      b.addEventListener("click",()=>{
+        closeModal();
+        if(state.mode==="exam"){toast("Terminez ou quittez l'examen avant de naviguer.");return}
+        if(state.mode!=="practice")startPractice();
+        gotoQuestion(q.i-1);
+      });
+      res.appendChild(b);
+    });
+  }
+  inp.addEventListener("input",run);openModal(w);inp.focus();
+}
+function openProfile(){
+  const st=getStats();
+  const w=document.createElement("div");
+  const rate=st.pa?Math.round(st.pc/st.pa*100):0;
+  let h='<h3>👤 Profil & statistiques</h3>'
+   +'<div class="mrow"><span>Questions validées en entraînement</span><b>'+st.pa+'</b></div>'
+   +'<div class="mrow"><span>Bonnes réponses</span><b>'+st.pc+'</b></div>'
+   +'<div class="mrow"><span>Taux de réussite</span><b>'+rate+' %</b></div>'
+   +'<h3 style="margin-top:1rem">Examens blancs</h3>';
+  if(!st.exams.length)h+='<p style="color:var(--muted)">Aucun examen blanc passé pour le moment.</p>';
+  st.exams.forEach(e=>{h+='<div class="mrow"><span>'+e.d+'</span><b>'+e.s+'/'+e.t+' ('+Math.round(e.s/e.t*100)+' %) — '+e.m+'</b></div>'});
+  w.innerHTML=h;
+  const rz=document.createElement("button");rz.className="btn-plain";rz.textContent="Réinitialiser les statistiques";
+  rz.addEventListener("click",()=>{if(confirm("Effacer toutes les statistiques ?")){setStats({pa:0,pc:0,exams:[]});closeModal();toast("Statistiques réinitialisées.")}});
+  w.appendChild(rz);openModal(w);
+}
+function exportReport(){
+  const st=getStats();
+  let txt="Rapport NCDA (NS0-165) — généré le "+new Date().toLocaleString("fr-FR")+"\n\n";
+  txt+="Entraînement : "+st.pc+" bonne(s) réponse(s) / "+st.pa+" question(s) validée(s)\n";
+  if(st.pa)txt+="Taux de réussite : "+Math.round(st.pc/st.pa*100)+" %\n";
+  txt+="\nExamens blancs :\n";
+  if(!st.exams.length)txt+="  (aucun)\n";
+  st.exams.forEach(e=>{txt+="  "+e.d+" — score "+e.s+"/"+e.t+" ("+Math.round(e.s/e.t*100)+" %) — durée "+e.m+"\n"});
+  const blob=new Blob([txt],{type:"text/plain;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="rapport-ncda.txt";a.click();
+  URL.revokeObjectURL(a.href);toast("Rapport téléchargé.");
+}
+function shareLink(){
+  const url=location.href.split("?")[0];
+  if(navigator.share){navigator.share({title:document.title,text:"QCM d'entraînement NCDA (NS0-165)",url}).catch(()=>{});return}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(()=>toast("Lien copié dans le presse-papiers.")).catch(()=>toast(url))}
+  else toast(url);
+}
+
+/* ---------- Liaison des boutons ---------- */
+$("#btnHome").addEventListener("click",()=>{
+  if(state.mode==="exam"&&!confirm("Un examen est en cours. Quitter sans soumettre ?"))return;
+  goHome();
+});
+$("#btnPractice").addEventListener("click",()=>startPractice());
+$("#btnExam").addEventListener("click",()=>startExam());
+function validateCurrent(q){
+  state.val[q.i]=1;
+  const good=isGood(q);state.done++;if(good)state.ok++;
+  const st=getStats();st.pa++;if(good)st.pc++;setStats(st);
+  render();
+  const ex=$("#expBox");if(ex&&!ex.hidden)ex.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+$("#btnPrev").addEventListener("click",()=>{if(state.cur>0){state.cur--;render();window.scrollTo({top:0})}});
+$("#btnVal").addEventListener("click",()=>{
+  const q=QUESTIONS[state.view[state.cur]];
+  if(state.mode!=="practice"||state.val[q.i])return;
+  if(!(state.sel[q.i]||[]).length){toast("Sélectionnez au moins une réponse.");return}
+  validateCurrent(q);
+});
+$("#btnNext").addEventListener("click",()=>{
+  if(state.mode==="exam"&&state.cur===state.view.length-1){confirmSubmit();return}
+  if(state.cur<state.view.length-1){state.cur++;render();window.scrollTo({top:0})}
+});
+$("#btnQuit").addEventListener("click",quitSession);
+$("#btnSubmit").addEventListener("click",()=>submitExam(false));
+$("#btnGrid").addEventListener("click",()=>{const g=$("#navGrid"),c=g.classList.toggle("collapsed");$("#btnGrid").setAttribute("aria-expanded",c?"false":"true")});
+$("#btnFlag").addEventListener("click",()=>{const q=QUESTIONS[state.view[state.cur]];state.flags[q.i]=!state.flags[q.i];render()});
+$("#btnExamAgain").addEventListener("click",()=>startExam());
+$("#btnRetryWrong").addEventListener("click",()=>startPractice(state.lastWrong));
+$("#btnResHome").addEventListener("click",goHome);
+$("#btnSearch").addEventListener("click",openSearch);
+$("#btnUser").addEventListener("click",openProfile);
+$("#btnDl").addEventListener("click",exportReport);
+$("#btnLink").addEventListener("click",shareLink);
+$("#btnTheme").addEventListener("click",()=>{ls.set("ncda_theme",document.documentElement.dataset.theme==="dark"?"light":"dark");document.documentElement.dataset.theme=ls.get("ncda_theme")});
+$("#btnFont").addEventListener("click",()=>{const n=(parseInt(ls.get("ncda_size")||"0",10)+1)%3;ls.set("ncda_size",String(n));document.documentElement.dataset.size=String(n);fit()});
+document.addEventListener("keydown",e=>{
+  if($("#quiz").hidden||e.target.tagName==="INPUT")return;
+  if(e.key==="ArrowRight"&&!$("#btnNext").disabled&&!(state.mode==="exam"&&state.cur===state.view.length-1))$("#btnNext").click();
+  if(e.key==="ArrowLeft"&&!$("#btnPrev").disabled)$("#btnPrev").click();
+});
+
+/* ---------- Initialisation ---------- */
+(function init(){
+  const sysDark=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.dataset.theme=ls.get("ncda_theme")||(sysDark?"dark":"light");
+  document.documentElement.dataset.size=ls.get("ncda_size")||"0";
+
+  /* Hauteur du bandeau (pour la barre d'examen collante) */
+  const setHdr=()=>document.documentElement.style.setProperty("--hdr",document.querySelector("header.top").offsetHeight+"px");
+  setHdr();addEventListener("resize",setHdr);addEventListener("orientationchange",setHdr);
+
+  /* Raccourcis de l'écran d'accueil Android et lien direct ?q=N */
+  const p=new URLSearchParams(location.search);
+  const qn=parseInt(p.get("q"),10),act=p.get("action");
+  if(act==="exam")startExam();
+  else if(act==="practice")startPractice();
+  else if(qn>=1&&qn<=QUESTIONS.length){startPractice();gotoQuestion(qn-1)}
+
+  /* Indicateur hors-ligne */
+  const net=()=>document.body.classList.toggle("is-offline",!navigator.onLine);
+  addEventListener("online",net);addEventListener("offline",net);net();
+
+  /* Installation (Android / Chrome) */
+  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+  let deferred=null;
+  const showInstall=v=>{["#btnInstall","#installTip"].forEach(s=>$(s).hidden=!v)};
+  addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;if(!standalone)showInstall(true)});
+  addEventListener("appinstalled",()=>{deferred=null;showInstall(false);toast("Application installée.")});
+  const doInstall=async()=>{
+    if(!deferred){toast("Menu ⋮ de Chrome → « Installer l'application ».");return}
+    deferred.prompt();
+    try{await deferred.userChoice}catch(e){}
+    deferred=null;showInstall(false);
+  };
+  $("#btnInstall").addEventListener("click",doInstall);
+  $("#btnInstall2").addEventListener("click",doInstall);
+
+  /* Service worker (hors-ligne) — nécessite HTTPS ou localhost */
+  if("serviceWorker" in navigator&&location.protocol!=="file:"){
+    navigator.serviceWorker.register("sw.js").then(reg=>{
+      reg.addEventListener("updatefound",()=>{
+        const nw=reg.installing;
+        nw&&nw.addEventListener("statechange",()=>{
+          if(nw.state==="installed"&&navigator.serviceWorker.controller)toast("Mise à jour disponible — relancez l'application.");
+        });
+      });
+    }).catch(()=>{});
+  }
+})();
+</script>
+</body>
+</html>
